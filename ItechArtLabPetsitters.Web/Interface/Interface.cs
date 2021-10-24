@@ -9,6 +9,7 @@ namespace ItechArtLabPetsitters.Web.Interface
     interface IRepository
     {
         public List<Service> GetAllServices();
+        public Service Search(long ID);
 
 
     }

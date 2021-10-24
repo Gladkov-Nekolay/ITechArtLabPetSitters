@@ -9,20 +9,27 @@ namespace ItechArtLabPetsitters.Web.Repository
 {
     public class FakeRepository: IRepository
     {
-        public List<Service> _Services { get; set; }
-        public FakeRepository()
-        {
-            _Services = new List<Service>
+        private static List<Service> _Services = new List<Service>
             {
-                new Service(ID: 1, ServiceName: "service name 1", Description: "Description 1"),
-                new Service(ID: 2, ServiceName: "service name 2", Description: "Description 2")
+                new Service(ID: 0, ServiceName: "service name 0", Description: "Description 0"),
+                new Service(ID: 1, ServiceName: "service name 1", Description: "Description 1")
             };
-        }
 
-        public List<Service> GetAllServices()
+        public List<Service> GetAllServices() // return list of all services
         {
             return _Services;
         }
+        public Service Search(long ID)  // searching searvice by ID
+        {
+            Service resoult = (from service in _Services
+                               where service._ID == ID
+                               select service).FirstOrDefault();
+            return resoult;
+             
+        }
+        public void AddService(string Name, string Description) 
+        {
+            _Services.Add(new Service(ID: (long)_Services.Count, Name, Description));
+        }
     }
-        
 }

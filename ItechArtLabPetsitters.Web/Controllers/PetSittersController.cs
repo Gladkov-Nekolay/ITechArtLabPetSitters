@@ -14,11 +14,24 @@ namespace ItechArtLabPetsitters.Web.Controllers
     public class PetSittersController : ControllerBase
     {
         private readonly FakeRepository _fakeRepository = new FakeRepository();
+
         [HttpGet]
-        public List<Service> GetAll() 
+        [Route("sevices")]
+        public List<Service> GetAll()
         {
             return _fakeRepository.GetAllServices();
         }
+        [Route("{id}")]
+        [HttpGet]
+        public Service search(long id)
+        {
+            return _fakeRepository.Search(id);
+        }
 
+        [HttpPost("{name}&{description}")]
+        public void PostService(string name, string description)
+        {
+            _fakeRepository.AddService(name, description);
+        }
     }
 }
