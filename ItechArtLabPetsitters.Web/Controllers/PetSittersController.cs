@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ItechArtLabPetsitters.Core.Entities;
 using ItechArtLabPetsitters.Web.Repository;
-using ItechArtLabPetsitters.Web.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,8 +13,8 @@ namespace ItechArtLabPetsitters.Web.Controllers
     [ApiController]
     public class PetSittersController : ControllerBase
     {
-        private readonly FakeRepository _fakeRepository = new FakeRepository();
-
+        private readonly FakeRepository _fakeRepository = new FakeRepository(); // нарушение архитектуры(проблемы для теста)
+        //private readonly *интерфейс* *имя* 
         [HttpGet]
         [Route("sevices")]
         public List<Service> GetAll()

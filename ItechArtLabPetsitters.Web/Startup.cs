@@ -25,7 +25,11 @@ namespace ItechArtLabPetsitters.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            // domain
+            //services.AddScoped<*интерфейс*, объект > ();// 1 экземпляр на 1 запрос 
+            // infrastructure
+            //services.AddScoped < *интерфейс *, объект > ();
+            // web UI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

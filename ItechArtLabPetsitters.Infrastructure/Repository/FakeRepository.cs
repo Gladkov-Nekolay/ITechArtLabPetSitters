@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Web.Entities;
+using ItechArtLabPetsitters.Core.Entities;
 using ItechArtLabPetsitters.Web.Interface;
 
 namespace ItechArtLabPetsitters.Web.Repository
