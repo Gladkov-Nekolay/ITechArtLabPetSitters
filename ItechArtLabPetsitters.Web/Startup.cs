@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ItechArtLabPetsitters.Core.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ItechArtLabPetsitters.Core.ServiceCore;
+using ItechArtLabPetsitters.Core.ServicesCore;
+using ItechArtLabPetsitters.Web.Interface;
+using ItechArtLabPetsitters.Infrastructure.Repository.EFRepository;
+using ItechArtLabPetsitters.Infrastructure.Context;
 
 namespace ItechArtLabPetsitters.Web
 {
@@ -26,10 +32,12 @@ namespace ItechArtLabPetsitters.Web
         public void ConfigureServices(IServiceCollection services)
         {
             // domain
-            //services.AddScoped<*интерфейс*, объект > ();// 1 экземпляр на 1 запрос 
+            services.AddScoped<IServicesService, ServicesService>();// 1 экземпляр на 1 запрос 
             // infrastructure
-            //services.AddScoped < *интерфейс *, объект > ();
-            // web UI
+            services.AddScoped <IServicesRepository, ServiceEFRepository> ();
+
+            services.AddDbContext<PetsittersContext>();
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

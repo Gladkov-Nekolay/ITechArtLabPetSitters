@@ -6,10 +6,11 @@ using ItechArtLabPetsitters.Core.Entities;
 
 namespace ItechArtLabPetsitters.Web.Interface
 {
-    public interface IRepository
+    public interface IServicesRepository
     {
         public List<Service> GetAllServices();
         public Service Search(long ID);
+        public void AddService(Service service);
 
 
     }
