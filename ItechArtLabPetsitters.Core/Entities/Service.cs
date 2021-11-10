@@ -14,9 +14,8 @@ namespace ItechArtLabPetsitters.Core.Entities
         public string _Description { set; get; }
         public decimal _Price { set; get; }
         public List<Order> _Orders { set; get; }
-        public Service(long iD, string serviceName, string description, decimal price)
+        public Service(string serviceName, string description, decimal price)
         {
-            _ID = iD;
             _ServiceName = serviceName;
             _Description = description;
             _Price = price;

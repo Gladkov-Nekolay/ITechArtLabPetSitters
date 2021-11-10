@@ -18,14 +18,23 @@ namespace ItechArtLabPetsitters.Core.ServicesCore
             _ServiceRepository = serviceRepository;
         }
 
-        public List<Entities.Service> GetAllServices()
+        public async Task<List<Entities.Service>> AsyncGetAllServices()
         {
-            return _ServiceRepository.GetAllServices();
+            return await _ServiceRepository.AsyncGetAllServices();
         }
 
-        public Entities.Service Search(long ID)
+        public async Task<Entities.Service> AsyncSearchService(long ID)
         {
-            return _ServiceRepository.Search(ID);
+            return await _ServiceRepository.AsyncSearchService(ID);
         }
+        public async Task AsyncAddService(string name, string description, decimal price) 
+        {
+            await _ServiceRepository.AsyncAddService(name, description, price);
+        }
+        public async Task AsyncDeleteService(long ID) 
+        {
+            await _ServiceRepository.AsyncDeleteService(ID);
+        }
+
     }
 }

@@ -22,21 +22,26 @@ namespace ItechArtLabPetsitters.Web.Controllers
 
         [HttpGet]
         [Route("sevices")]
-        public List<Service> GetAll()
+        public Task<List<Service>> GetAll()
         {
-            return service.GetAllServices();
+            return service.AsyncGetAllServices();
         }
         [Route("{id}")]
         [HttpGet]
-        public Service search(long id)
+        public Task<Service> search(long id)
         {
-            return service.Search(id);
+            return service.AsyncSearchService(id);
         }
 
-        //[HttpPost("{name}&{description}")]
-        //public void PostService(string name, string description)
-        //{
-        //    service.AddService(name, description);
-        //}
+        [HttpPost("service/{name}")]
+        public async Task AsyncPostService(string name, string description, decimal price)
+        {
+            await service.AsyncAddService(name, description, price);
+        }
+        [HttpDelete("DeleteService/{ID}")]
+        public async Task AsyncDeleteService(long ID) 
+        {
+            await service.AsyncDeleteService(ID);
+        }
     }
 }

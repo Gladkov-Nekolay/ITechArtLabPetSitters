@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Entities;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using ItechArtLabPetsitters.Web.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
@@ -13,20 +14,25 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
     {
         private readonly PetsittersContext _dbContext;
         public ServiceEFRepository(PetsittersContext context) => this._dbContext = context;
-
-        public void AddService(Service service)
+        public async Task <List<Service>> AsyncGetAllServices()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Services.ToListAsync();
         }
 
-        public List<Service> GetAllServices()
+        public async Task<Service> AsyncSearchService(long ID)
         {
-            return _dbContext.Services.ToList();
+            return await _dbContext.Services.FirstAsync(p=>p._ID==ID);
         }
-
-        public Service Search(long ID)
+        public async Task AsyncAddService(string name, string description, decimal price) 
         {
-            return _dbContext.Services.Find(ID);
+            _dbContext.Services.Add(new Service(name, description, price));
+            await _dbContext.SaveChangesAsync();
+        }
+        public async Task AsyncDeleteService(long id) 
+        {
+            Service deletedService = await _dbContext.Services.FirstAsync(p => p._ID == id); ;
+            _dbContext.Services.Remove(deletedService);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
