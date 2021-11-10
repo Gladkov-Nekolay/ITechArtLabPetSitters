@@ -12,7 +12,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ItechArtLabPetsitters.Core.ServiceCore;
-using ItechArtLabPetsitters.Core.ServicesCore;
 using ItechArtLabPetsitters.Infrastructure.Repository.EFRepository;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using ItechArtLabPetsitters.Core.Interface;

@@ -11,11 +11,11 @@ namespace ItechArtLabPetsitters.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PetSittersController : ControllerBase
+    public class ServiceController : ControllerBase
     {
         private readonly IServicesService service;
 
-        public PetSittersController(IServicesService service)
+        public ServiceController(IServicesService service)
         {
             this.service = service;
         }

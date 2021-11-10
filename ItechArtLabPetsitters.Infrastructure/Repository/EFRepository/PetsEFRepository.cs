@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Entities;
 using ItechArtLabPetsitters.Core.Interface;
-using ItechArtLabPetsitters.Core.ServiceCore;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 

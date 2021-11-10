@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.ServiceCore;
 using ItechArtLabPetsitters.Core.Interface;
 
-namespace ItechArtLabPetsitters.Core.ServicesCore
+namespace ItechArtLabPetsitters.Core.ServiceCore
 {
     public class ServicesService : IServicesService
     {
