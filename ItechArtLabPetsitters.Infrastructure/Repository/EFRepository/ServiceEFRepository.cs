@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Entities;
+using ItechArtLabPetsitters.Core.Interface;
 using ItechArtLabPetsitters.Infrastructure.Context;
-using ItechArtLabPetsitters.Web.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
@@ -30,7 +30,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         }
         public async Task AsyncDeleteService(long id) 
         {
-            Service deletedService = await _dbContext.Services.FirstAsync(p => p._ID == id); ;
+            Service deletedService = await _dbContext.Services.FirstAsync(p => p._ID == id); 
             _dbContext.Services.Remove(deletedService);
             await _dbContext.SaveChangesAsync();
         }

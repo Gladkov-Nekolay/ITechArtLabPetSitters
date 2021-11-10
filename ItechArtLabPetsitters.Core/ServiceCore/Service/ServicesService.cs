@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Entities;
 using ItechArtLabPetsitters.Core.ServiceCore;
-using ItechArtLabPetsitters.Web.Interface;
+using ItechArtLabPetsitters.Core.Interface;
 
 namespace ItechArtLabPetsitters.Core.ServicesCore
 {

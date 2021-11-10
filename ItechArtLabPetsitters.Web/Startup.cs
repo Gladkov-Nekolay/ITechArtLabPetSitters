@@ -13,10 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ItechArtLabPetsitters.Core.ServiceCore;
 using ItechArtLabPetsitters.Core.ServicesCore;
-using ItechArtLabPetsitters.Web.Interface;
 using ItechArtLabPetsitters.Infrastructure.Repository.EFRepository;
 using ItechArtLabPetsitters.Infrastructure.Context;
-
+using ItechArtLabPetsitters.Core.Interface;
 namespace ItechArtLabPetsitters.Web
 {
     public class Startup
@@ -33,8 +32,10 @@ namespace ItechArtLabPetsitters.Web
         {
             // domain
             services.AddScoped<IServicesService, ServicesService>();// 1 экземпляр на 1 запрос 
+            services.AddScoped<IPetsService, PetsService>();
             // infrastructure
-            services.AddScoped <IServicesRepository, ServiceEFRepository> ();
+            services.AddScoped<IServicesRepository, ServiceEFRepository>();
+            services.AddScoped<IPetsRepository, PetsEFRepository>();
 
             services.AddDbContext<PetsittersContext>();
             

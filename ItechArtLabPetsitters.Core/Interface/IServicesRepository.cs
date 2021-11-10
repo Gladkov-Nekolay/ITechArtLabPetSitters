@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Entities;
 
-namespace ItechArtLabPetsitters.Web.Interface
+namespace ItechArtLabPetsitters.Core.Interface
 {
     public interface IServicesRepository
     {

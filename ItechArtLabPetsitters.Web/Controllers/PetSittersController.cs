@@ -21,7 +21,7 @@ namespace ItechArtLabPetsitters.Web.Controllers
         }
 
         [HttpGet]
-        [Route("sevices")]
+        [Route("services")]
         public Task<List<Service>> GetAll()
         {
             return service.AsyncGetAllServices();

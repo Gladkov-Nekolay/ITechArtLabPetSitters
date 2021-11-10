@@ -15,9 +15,8 @@ namespace ItechArtLabPetsitters.Core.Entities
         public byte _Age { set; get; }
         public string _Description { set; get; }
         public List<Order> _Orders { set; get; }
-        public Pet(long iD, string petName, string petType, byte age, string description)
+        public Pet(string petName, string petType, byte age, string description)
         {
-            _ID = iD;
             _PetName = petName;
             _PetType = petType;
             _Age = age;
