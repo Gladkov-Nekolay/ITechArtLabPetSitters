@@ -16,9 +16,8 @@ namespace ItechArtLabPetsitters.Core.Entities
         public string _PhoneNumber { set; get; }
         public List<Review> _Reviews { set; get; }
         public List<Order> _Orders { set; get; }
-        public Petsitter(long iD, string name, string phoneNumber)
+        public Petsitter(string name, string phoneNumber)
         {
-            _ID = iD;
             _Name = name;
             _PhoneNumber = phoneNumber;
         }

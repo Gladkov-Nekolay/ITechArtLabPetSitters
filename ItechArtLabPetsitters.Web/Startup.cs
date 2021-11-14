@@ -15,6 +15,9 @@ using ItechArtLabPetsitters.Core.ServiceCore;
 using ItechArtLabPetsitters.Infrastructure.Repository.EFRepository;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Core.ServiceCore.Petsitters;
+using ItechArtLabPetsitters.Core.ServiceCore.Clients;
+
 namespace ItechArtLabPetsitters.Web
 {
     public class Startup
@@ -32,9 +35,13 @@ namespace ItechArtLabPetsitters.Web
             // domain
             services.AddScoped<IServicesService, ServicesService>();// 1 экземпляр на 1 запрос 
             services.AddScoped<IPetsService, PetsService>();
+            services.AddScoped<IPetsittersService,PetsittersService>();
+            services.AddScoped<IClientService, ClientService>();
             // infrastructure
             services.AddScoped<IServicesRepository, ServiceEFRepository>();
             services.AddScoped<IPetsRepository, PetsEFRepository>();
+            services.AddScoped<IPetsittersRepository, PetSittersEFRepository>();
+            services.AddScoped<IClientRepository,ClientEFRepository>();
 
             services.AddDbContext<PetsittersContext>();
             
