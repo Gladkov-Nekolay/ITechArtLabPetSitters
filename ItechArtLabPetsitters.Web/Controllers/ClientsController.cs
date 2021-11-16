@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.ServiceCore.Clients;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.ServiceCore.Clients;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

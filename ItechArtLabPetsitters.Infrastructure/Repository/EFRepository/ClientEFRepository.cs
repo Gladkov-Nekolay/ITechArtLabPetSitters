@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.Interface;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,20 +15,20 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         private readonly PetsittersContext _dbContext;
         public ClientEFRepository(PetsittersContext context) => this._dbContext = context;
 
-        public async Task AsyncAddClient(string name, string phoneNumber)
+        public async Task AddClientAsync(string name, string phoneNumber)
         {
             _dbContext.Clients.Add(new Client(name, phoneNumber));
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task AsyncDeleteClient(long ID)
+        public async Task DeleteClientAsync(long ID)
         {
-            Client deletedClient = await _dbContext.Clients.FirstAsync(p => p._ID == ID);
+            Client deletedClient = await _dbContext.Clients.FirstAsync(p => p.ID == ID);
             _dbContext.Clients.Remove(deletedClient);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<Client>> AsyncGetAllClients()
+        public async Task<List<Client>> GetAllClientsAsync()
         {
             return await _dbContext.Clients.ToListAsync();
         }

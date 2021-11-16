@@ -4,21 +4,21 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ItechArtLabPetsitters.Core.Entities
+namespace ItechArtLabPetsitters.Repository.Entities
 {
     public class Service
     {
         [Key]
-        public long _ID { set; get; }
-        public string _ServiceName { set; get; }
-        public string _Description { set; get; }
-        public decimal _Price { set; get; }
-        public List<Order> _Orders { set; get; }
+        public long ID { set; get; }
+        public string ServiceName { set; get; }
+        public string Description { set; get; }
+        public decimal Price { set; get; }
+        public List<Order> Orders { set; get; }
         public Service(string serviceName, string description, decimal price)
         {
-            _ServiceName = serviceName;
-            _Description = description;
-            _Price = price;
+            ServiceName = serviceName;
+            Description = description;
+            Price = price;
         }
     }
 }

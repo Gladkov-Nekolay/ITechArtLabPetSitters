@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.Interface;
 
-namespace ItechArtLabPetsitters.Core.ServiceCore
+namespace ItechArtLabPetsitters.Repository.ServiceCore
 {
     public class ServicesService : IServicesService
     {
@@ -17,22 +17,22 @@ namespace ItechArtLabPetsitters.Core.ServiceCore
             _ServiceRepository = serviceRepository;
         }
 
-        public async Task<List<Entities.Service>> AsyncGetAllServices()
+        public async Task<List<Service>> GetAllServicesAsync()
         {
-            return await _ServiceRepository.AsyncGetAllServices();
+            return await _ServiceRepository.GetAllServicesAsync();
         }
 
-        public async Task<Entities.Service> AsyncSearchService(long ID)
+        public async Task<Service> SearchServiceAsync(long ID)
         {
-            return await _ServiceRepository.AsyncSearchService(ID);
+            return await _ServiceRepository.SearchServiceAsync(ID);
         }
-        public async Task AsyncAddService(string name, string description, decimal price) 
+        public async Task AddServiceAsync(string name, string description, decimal price) 
         {
-            await _ServiceRepository.AsyncAddService(name, description, price);
+            await _ServiceRepository.AddServiceAsync(name, description, price);
         }
-        public async Task AsyncDeleteService(long ID) 
+        public async Task DeleteServiceAsync(long ID) 
         {
-            await _ServiceRepository.AsyncDeleteService(ID);
+            await _ServiceRepository.DeleteServiceAsync(ID);
         }
 
     }

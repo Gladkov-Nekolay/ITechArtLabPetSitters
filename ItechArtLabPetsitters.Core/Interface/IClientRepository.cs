@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
+using ItechArtLabPetsitters.Repository.Entities;
 
-namespace ItechArtLabPetsitters.Core.Interface
+namespace ItechArtLabPetsitters.Repository.Interface
 {
     public interface IClientRepository
     {
-        public Task AsyncAddClient(string name, string phoneNumber);
-        public Task<List<Client>> AsyncGetAllClients();
-        public Task AsyncDeleteClient(long ID);
+        public Task AddClientAsync(string name, string phoneNumber);
+        public Task<List<Client>> GetAllClientsAsync();
+        public Task DeleteClientAsync(long ID);
     }
 }

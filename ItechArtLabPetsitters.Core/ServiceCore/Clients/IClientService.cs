@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
+using ItechArtLabPetsitters.Repository.Entities;
 
-namespace ItechArtLabPetsitters.Core.ServiceCore.Clients
+namespace ItechArtLabPetsitters.Repository.ServiceCore.Clients
 {
     public interface IClientService
     {

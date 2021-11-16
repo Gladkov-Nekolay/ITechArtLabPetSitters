@@ -7,10 +7,10 @@ using ItechArtLabPetsitters.Repository.Entities;
 
 namespace ItechArtLabPetsitters.Repository.Interface
 {
-    public interface IPetsRepository
+    public interface IReviewRepository
     {
-        public Task AddPetAsync(string petName, string petType, byte age, string description);
-        public Task<List<Pet>> GetAllPetsAsync();
-        public Task DeletePetAsync(long ID);
+        public Task AddReviewAsync(long petsitterID, long clientID, byte mark, string comment);
+        public Task<List<Review>> GetAllReviewAsync();
+        public Task DeleteReviewAsync(long ID);
     }
 }

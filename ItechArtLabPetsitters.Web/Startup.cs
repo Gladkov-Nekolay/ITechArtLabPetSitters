@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
+using ItechArtLabPetsitters.Repository.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using ItechArtLabPetsitters.Core.ServiceCore;
+using ItechArtLabPetsitters.Repository.ServiceCore;
 using ItechArtLabPetsitters.Infrastructure.Repository.EFRepository;
 using ItechArtLabPetsitters.Infrastructure.Context;
-using ItechArtLabPetsitters.Core.Interface;
-using ItechArtLabPetsitters.Core.ServiceCore.Petsitters;
-using ItechArtLabPetsitters.Core.ServiceCore.Clients;
+using ItechArtLabPetsitters.Repository.Interface;
+using ItechArtLabPetsitters.Repository.ServiceCore.Petsitters;
+using ItechArtLabPetsitters.Repository.ServiceCore.Clients;
+using ItechArtLabPetsitters.Repository.ServiceCore.Reviews;
 
 namespace ItechArtLabPetsitters.Web
 {
@@ -37,11 +38,13 @@ namespace ItechArtLabPetsitters.Web
             services.AddScoped<IPetsService, PetsService>();
             services.AddScoped<IPetsittersService,PetsittersService>();
             services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IReviewService, ReviewService>();
             // infrastructure
             services.AddScoped<IServicesRepository, ServiceEFRepository>();
             services.AddScoped<IPetsRepository, PetsEFRepository>();
             services.AddScoped<IPetsittersRepository, PetSittersEFRepository>();
             services.AddScoped<IClientRepository,ClientEFRepository>();
+            services.AddScoped<IReviewRepository,RewiewEFRepository>();
 
             services.AddDbContext<PetsittersContext>();
             

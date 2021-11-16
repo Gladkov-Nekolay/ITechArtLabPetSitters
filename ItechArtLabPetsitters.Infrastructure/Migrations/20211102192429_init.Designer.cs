@@ -167,25 +167,25 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
             modelBuilder.Entity("ItechArtLabPetsitters.Core.Entities.Order", b =>
                 {
                     b.HasOne("ItechArtLabPetsitters.Core.Entities.Client", "_Client")
-                        .WithMany("_Orders")
+                        .WithMany("Orders")
                         .HasForeignKey("_ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ItechArtLabPetsitters.Core.Entities.Pet", "_Pet")
-                        .WithMany("_Orders")
+                        .WithMany("Orders")
                         .HasForeignKey("_PetID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ItechArtLabPetsitters.Core.Entities.Petsitter", "_Petsitter")
-                        .WithMany("_Orders")
+                        .WithMany("Orders")
                         .HasForeignKey("_PetsitterID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ItechArtLabPetsitters.Core.Entities.Service", "_Service")
-                        .WithMany("_Orders")
+                        .WithMany("Orders")
                         .HasForeignKey("_ServiceID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -202,13 +202,13 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
             modelBuilder.Entity("ItechArtLabPetsitters.Core.Entities.Review", b =>
                 {
                     b.HasOne("ItechArtLabPetsitters.Core.Entities.Client", "_Client")
-                        .WithMany("_Reviews")
+                        .WithMany("Reviews")
                         .HasForeignKey("_ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ItechArtLabPetsitters.Core.Entities.Petsitter", "_Petsitter")
-                        .WithMany("_Reviews")
+                        .WithMany("Reviews")
                         .HasForeignKey("_PetsitterID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -220,26 +220,26 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
 
             modelBuilder.Entity("ItechArtLabPetsitters.Core.Entities.Client", b =>
                 {
-                    b.Navigation("_Orders");
+                    b.Navigation("Orders");
 
-                    b.Navigation("_Reviews");
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("ItechArtLabPetsitters.Core.Entities.Pet", b =>
                 {
-                    b.Navigation("_Orders");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("ItechArtLabPetsitters.Core.Entities.Petsitter", b =>
                 {
-                    b.Navigation("_Orders");
+                    b.Navigation("Orders");
 
-                    b.Navigation("_Reviews");
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("ItechArtLabPetsitters.Core.Entities.Service", b =>
                 {
-                    b.Navigation("_Orders");
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

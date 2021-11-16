@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.ServiceCore;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.ServiceCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,24 +24,24 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [Route("services")]
         public Task<List<Service>> GetAll()
         {
-            return service.AsyncGetAllServices();
+            return service.GetAllServicesAsync();
         }
         [Route("{id}")]
         [HttpGet]
         public Task<Service> search(long id)
         {
-            return service.AsyncSearchService(id);
+            return service.SearchServiceAsync(id);
         }
 
         [HttpPost("service/{name}")]
-        public async Task AsyncPostService(string name, string description, decimal price)
+        public async Task PostServiceAsync(string name, string description, decimal price)
         {
-            await service.AsyncAddService(name, description, price);
+            await service.AddServiceAsync(name, description, price);
         }
         [HttpDelete("DeleteService/{ID}")]
-        public async Task AsyncDeleteService(long ID) 
+        public async Task DeleteServiceAsync(long ID) 
         {
-            await service.AsyncDeleteService(ID);
+            await service.DeleteServiceAsync(ID);
         }
     }
 }

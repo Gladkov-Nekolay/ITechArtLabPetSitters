@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.Interface;
 
-namespace ItechArtLabPetsitters.Core.ServiceCore.Petsitters
+namespace ItechArtLabPetsitters.Repository.ServiceCore.Petsitters
 {
     public class PetsittersService : IPetsittersService
     {
@@ -15,19 +15,19 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Petsitters
         {
             _PetsittersRepository = PetsittersRepository;
         }
-        public async Task AsyncAddPetsitter(string Name,string Number)
+        public async Task AddPetsitterAsync(string Name,string Number)
         {
-            await _PetsittersRepository.AsyncAddPetsitter(Name,Number);
+            await _PetsittersRepository.AddPetsitterAsync(Name,Number);
         }
 
-        public async Task<List<Petsitter>> AsyncGetAllPetsitters()
+        public async Task<List<Petsitter>> GetAllPetsittersAsync()
         {
-            return await _PetsittersRepository.AsyncGetAllPetsitters();
+            return await _PetsittersRepository.GetAllPetsittersAsync();
         }
 
-        public async Task AsynkDeletePetsitter(long ID)
+        public async Task DeletePetsitterAsynk(long ID)
         {
-            await _PetsittersRepository.AsyncDeletePetsitter(ID);
+            await _PetsittersRepository.DeletePetsitterAsync(ID);
         }
     }
 }

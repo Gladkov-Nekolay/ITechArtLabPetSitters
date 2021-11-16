@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.ServiceCore.Petsitters;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.ServiceCore.Petsitters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,18 +19,18 @@ public class PetsittersController : ControllerBase
     [HttpPost("Petsitter/{petsitterName}")]
     public async Task AsyncPostPetsitter(string petsitterName, string phone)
     {
-        await service.AsyncAddPetsitter(petsitterName, phone);
+        await service.AddPetsitterAsync(petsitterName, phone);
     }
     [HttpDelete]
-    public async Task AsyncDeletePetsitter(long ID)
+    public async Task DeletePetAsyncsitter(long ID)
     {
-        await service.AsynkDeletePetsitter(ID);
+        await service.DeletePetsitterAsynk(ID);
     }
     [HttpGet]
     [Route("Petsitters")]
     public Task<List<Petsitter>> GetAll()
     {
-        return service.AsyncGetAllPetsitters();
+        return service.GetAllPetsittersAsync();
     }
 }
 

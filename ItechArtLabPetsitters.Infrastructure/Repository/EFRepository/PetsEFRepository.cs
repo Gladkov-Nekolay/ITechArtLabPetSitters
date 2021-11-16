@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.Interface;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,19 +14,19 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
     {
         private readonly PetsittersContext _dbContext;
         public PetsEFRepository(PetsittersContext context) => this._dbContext = context;
-        public async Task AsyncAddPet(string petName, string petType, byte age, string description)
+        public async Task AddPetAsync(string petName, string petType, byte age, string description)
         {
             _dbContext.Pets.Add(new Pet(petName, petType, age, description));
             await _dbContext.SaveChangesAsync(); ;
         }
 
-        public async Task AsyncDeletePet(long ID)
+        public async Task DeletePetAsync(long ID)
         {
-            Pet deletedPet = await _dbContext.Pets.FirstAsync(p => p._ID == ID); ;
+            Pet deletedPet = await _dbContext.Pets.FirstAsync(p => p.ID == ID); ;
             _dbContext.Pets.Remove(deletedPet);
             await _dbContext.SaveChangesAsync();
         }
-        public async Task<List<Pet>> AsyncGetAllPets()
+        public async Task<List<Pet>> GetAllPetsAsync()
         {
             return await _dbContext.Pets.ToListAsync();
         }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Entities;
-using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.Interface;
 
-namespace ItechArtLabPetsitters.Core.ServiceCore.Clients
+namespace ItechArtLabPetsitters.Repository.ServiceCore.Clients
 {
     public class ClientService : IClientService
     {
@@ -17,17 +17,17 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Clients
         }
         public async Task AsyncAddClient(string Name, string Number)
         {
-            await _ClientRepository.AsyncAddClient(Name, Number);
+            await _ClientRepository.AddClientAsync(Name, Number);
         }
 
         public async Task<List<Client>> AsyncGetAllClients()
         {
-            return await _ClientRepository.AsyncGetAllClients();
+            return await _ClientRepository.GetAllClientsAsync();
         }
 
         public async Task AsynkDeleteClient(long ID)
         {
-            await _ClientRepository.AsyncDeleteClient(ID);
+            await _ClientRepository.DeleteClientAsync(ID);
         }
     }
 }

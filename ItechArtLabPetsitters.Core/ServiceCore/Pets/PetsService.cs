@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Repository.Entities;
+using ItechArtLabPetsitters.Repository.Interface;
 
-namespace ItechArtLabPetsitters.Core.ServiceCore
+namespace ItechArtLabPetsitters.Repository.ServiceCore
 {
     public class PetsService : IPetsService
     {
@@ -14,18 +15,18 @@ namespace ItechArtLabPetsitters.Core.ServiceCore
         {
             _PetsRepository = PetsRepository;
         }
-        public async Task AsyncAddPet(string petName, string petType, byte age, string description)
+        public async Task AddPetAsync(string petName, string petType, byte age, string description)
         {
-             await _PetsRepository.AsyncAddPet(petName, petType, age, description);
+             await _PetsRepository.AddPetAsync(petName, petType, age, description);
         }
 
-        public async Task AsynkDeletePet(long ID)
+        public async Task DeletePetAsync(long ID)
         {
-            await _PetsRepository.AsyncDeletePet(ID);
+            await _PetsRepository.DeletePetAsync(ID);
         }
-        public async Task<List<Entities.Pet>> AsyncGetAllPets()
+        public async Task<List<Pet>> GetAllPetsAsync()
         {
-            return await _PetsRepository.AsyncGetAllPets();
+            return await _PetsRepository.GetAllPetsAsync();
         }
     }
 }

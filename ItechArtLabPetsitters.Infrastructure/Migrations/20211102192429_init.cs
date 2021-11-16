@@ -78,15 +78,15 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reviews", x => x._ReviewID);
+                    table.PrimaryKey("PKReviews", x => x._ReviewID);
                     table.ForeignKey(
-                        name: "FK_Reviews_Clients__ClientID",
+                        name: "FKReviews_Clients__ClientID",
                         column: x => x._ClientID,
                         principalTable: "Clients",
                         principalColumn: "_ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reviews_Petsitters__PetsitterID",
+                        name: "FKReviews_Petsitters__PetsitterID",
                         column: x => x._PetsitterID,
                         principalTable: "Petsitters",
                         principalColumn: "_ID",
@@ -107,27 +107,27 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x._ID);
+                    table.PrimaryKey("PKOrders", x => x._ID);
                     table.ForeignKey(
-                        name: "FK_Orders_Clients__ClientID",
+                        name: "FKOrders_Clients__ClientID",
                         column: x => x._ClientID,
                         principalTable: "Clients",
                         principalColumn: "_ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Pets__PetID",
+                        name: "FKOrders_Pets__PetID",
                         column: x => x._PetID,
                         principalTable: "Pets",
                         principalColumn: "_ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Petsitters__PetsitterID",
+                        name: "FKOrders_Petsitters__PetsitterID",
                         column: x => x._PetsitterID,
                         principalTable: "Petsitters",
                         principalColumn: "_ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Services__ServiceID",
+                        name: "FKOrders_Services__ServiceID",
                         column: x => x._ServiceID,
                         principalTable: "Services",
                         principalColumn: "_ID",
@@ -135,32 +135,32 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders__ClientID",
+                name: "IXOrders__ClientID",
                 table: "Orders",
                 column: "_ClientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders__PetID",
+                name: "IXOrders__PetID",
                 table: "Orders",
                 column: "_PetID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders__PetsitterID",
+                name: "IXOrders__PetsitterID",
                 table: "Orders",
                 column: "_PetsitterID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders__ServiceID",
+                name: "IXOrders__ServiceID",
                 table: "Orders",
                 column: "_ServiceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews__ClientID",
+                name: "IXReviews__ClientID",
                 table: "Reviews",
                 column: "_ClientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews__PetsitterID",
+                name: "IXReviews__PetsitterID",
                 table: "Reviews",
                 column: "_PetsitterID");
         }

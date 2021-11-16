@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ItechArtLabPetsitters.Core.Entities
+namespace ItechArtLabPetsitters.Repository.Entities
 {
     public class Petsitter
     {
@@ -14,8 +14,8 @@ namespace ItechArtLabPetsitters.Core.Entities
         public long _ID { set; get; }
         public string _Name { set; get; }
         public string _PhoneNumber { set; get; }
-        public List<Review> _Reviews { set; get; }
-        public List<Order> _Orders { set; get; }
+        public List<Review> Reviews { set; get; }
+        public List<Order> Orders { set; get; }
         public Petsitter(string name, string phoneNumber)
         {
             _Name = name;
