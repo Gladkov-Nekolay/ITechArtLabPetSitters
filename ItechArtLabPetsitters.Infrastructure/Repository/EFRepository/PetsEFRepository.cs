@@ -17,7 +17,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         public async Task AddPetAsync(string petName, string petType, byte age, string description)
         {
             _dbContext.Pets.Add(new Pet(petName, petType, age, description));
-            await _dbContext.SaveChangesAsync(); ;
+            await _dbContext.SaveChangesAsync(); 
         }
 
         public async Task DeletePetAsync(long ID)

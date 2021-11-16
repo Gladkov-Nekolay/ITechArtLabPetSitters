@@ -18,6 +18,7 @@ using ItechArtLabPetsitters.Repository.Interface;
 using ItechArtLabPetsitters.Repository.ServiceCore.Petsitters;
 using ItechArtLabPetsitters.Repository.ServiceCore.Clients;
 using ItechArtLabPetsitters.Repository.ServiceCore.Reviews;
+using Microsoft.EntityFrameworkCore;
 
 namespace ItechArtLabPetsitters.Web
 {
@@ -33,6 +34,7 @@ namespace ItechArtLabPetsitters.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             // domain
             services.AddScoped<IServicesService, ServicesService>();// 1 экземпляр на 1 запрос 
             services.AddScoped<IPetsService, PetsService>();
@@ -46,7 +48,7 @@ namespace ItechArtLabPetsitters.Web
             services.AddScoped<IClientRepository,ClientEFRepository>();
             services.AddScoped<IReviewRepository,RewiewEFRepository>();
 
-            services.AddDbContext<PetsittersContext>();
+            services.AddDbContext<PetsittersContext>(context=>context.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
