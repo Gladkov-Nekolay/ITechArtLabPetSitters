@@ -9,14 +9,6 @@ namespace ItechArtLabPetsitters.Repository.Entities
 {
     public class Review
     {
-        [Key]
-        public long ReviewID { set; get; }
-        public long PetsitterID { set; get; }
-        public Petsitter Petsitter { set; get; }
-        public long ClientID { set; get; }
-        public Client Client { set; get; }
-        public byte Mark { set; get; }
-        public string Comment { set; get; }
         public Review(long petsitterID, long clientID, byte mark, string comment)
         {
             PetsitterID = petsitterID;
@@ -24,5 +16,14 @@ namespace ItechArtLabPetsitters.Repository.Entities
             Mark = mark;
             Comment = comment;
         }
+
+        [Key]
+        public long ReviewID { set; get; }
+        public long PetsitterID { set; get; }
+        //public User Petsitter { set; get; }
+        public long ClientID { set; get; }
+        public User user/*Client*/ { set; get; }
+        public byte Mark { set; get; }
+        public string Comment { set; get; }
     }
 }

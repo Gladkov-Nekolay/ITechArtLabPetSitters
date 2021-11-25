@@ -14,15 +14,15 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
     {
         private readonly PetsittersContext _dbContext;
         public PetsEFRepository(PetsittersContext context) => this._dbContext = context;
-        public async Task AddPetAsync(string petName, string petType, byte age, string description)
+        public async Task AddPetAsync(string petName, string petType, byte age, string description,long OwnerID)
         {
-            _dbContext.Pets.Add(new Pet(petName, petType, age, description));
+            _dbContext.Pets.Add(new Pet(petName, petType, age, description,OwnerID));
             await _dbContext.SaveChangesAsync(); 
         }
 
         public async Task DeletePetAsync(long ID)
         {
-            Pet deletedPet = await _dbContext.Pets.FirstAsync(p => p.ID == ID); ;
+            Pet deletedPet = await _dbContext.Pets.FirstAsync(p => p.ID == ID); 
             _dbContext.Pets.Remove(deletedPet);
             await _dbContext.SaveChangesAsync();
         }

@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ItechArtLabPetsitters.Core\ItechArtLabPetsitters.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

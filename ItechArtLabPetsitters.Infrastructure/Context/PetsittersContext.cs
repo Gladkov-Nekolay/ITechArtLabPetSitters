@@ -15,12 +15,11 @@ namespace ItechArtLabPetsitters.Infrastructure.Context
         {
         }
 
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Pet> Pets { get; set; }
-        public DbSet<Petsitter> Petsitters { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Service> Services { get; set; }
-       
+
     }
 }

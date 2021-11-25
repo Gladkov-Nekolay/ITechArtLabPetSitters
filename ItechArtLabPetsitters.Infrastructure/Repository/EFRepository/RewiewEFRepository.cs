@@ -23,14 +23,17 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 
         public async Task DeleteReviewAsync(long ID)
         {
-            Review deletedClient = await _dbContext.Reviews.FirstAsync(p => p.ReviewID == ID);
-            _dbContext.Reviews.Remove(deletedClient);
+            Review DeletedReview = await _dbContext.Reviews.FirstAsync(p => p.ReviewID == ID);
+            _dbContext.Reviews.Remove(DeletedReview);
             await _dbContext.SaveChangesAsync();
         }
-
         public async Task<List<Review>> GetAllReviewAsync()
         {
             return await _dbContext.Reviews.ToListAsync();
+        }
+        public async Task<List<Review>> GetReviewsForUser(long ID) 
+        {
+            return await _dbContext.Reviews.Where(p=>p.PetsitterID==ID).ToListAsync();
         }
     }
 }

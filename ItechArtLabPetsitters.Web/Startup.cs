@@ -15,10 +15,10 @@ using ItechArtLabPetsitters.Repository.ServiceCore;
 using ItechArtLabPetsitters.Infrastructure.Repository.EFRepository;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using ItechArtLabPetsitters.Repository.Interface;
-using ItechArtLabPetsitters.Repository.ServiceCore.Petsitters;
-using ItechArtLabPetsitters.Repository.ServiceCore.Clients;
 using ItechArtLabPetsitters.Repository.ServiceCore.Reviews;
 using Microsoft.EntityFrameworkCore;
+using ItechArtLabPetsitters.Core.Interface;
+using ItechArtLabPetsitters.Core.ServiceCore.Order;
 
 namespace ItechArtLabPetsitters.Web
 {
@@ -38,15 +38,15 @@ namespace ItechArtLabPetsitters.Web
             // domain
             services.AddScoped<IServicesService, ServicesService>();// 1 экземпляр на 1 запрос 
             services.AddScoped<IPetsService, PetsService>();
-            services.AddScoped<IPetsittersService,PetsittersService>();
-            services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IOrdersService, OrderService>();
             // infrastructure
             services.AddScoped<IServicesRepository, ServiceEFRepository>();
             services.AddScoped<IPetsRepository, PetsEFRepository>();
-            services.AddScoped<IPetsittersRepository, PetSittersEFRepository>();
-            services.AddScoped<IClientRepository,ClientEFRepository>();
             services.AddScoped<IReviewRepository,RewiewEFRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddDbContext<PetsittersContext>(context=>context.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             

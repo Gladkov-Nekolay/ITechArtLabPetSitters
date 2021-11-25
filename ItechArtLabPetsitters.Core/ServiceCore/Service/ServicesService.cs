@@ -26,7 +26,7 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             return await _ServiceRepository.SearchServiceAsync(ID);
         }
-        public async Task AddServiceAsync(string name, string description, decimal price) 
+        public async Task AddServiceAsync(string name, string description, double price) 
         {
             await _ServiceRepository.AddServiceAsync(name, description, price);
         }

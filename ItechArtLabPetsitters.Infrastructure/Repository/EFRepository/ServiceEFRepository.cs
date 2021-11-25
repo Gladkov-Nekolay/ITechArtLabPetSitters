@@ -23,7 +23,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         {
             return await _dbContext.Services.FirstAsync(p=>p.ID==ID);
         }
-        public async Task AddServiceAsync(string name, string description, decimal price) 
+        public async Task AddServiceAsync(string name, string description, double price) 
         {
             _dbContext.Services.Add(new Service(name, description, price));
             await _dbContext.SaveChangesAsync();

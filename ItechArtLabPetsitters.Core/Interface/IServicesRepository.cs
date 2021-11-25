@@ -10,7 +10,7 @@ namespace ItechArtLabPetsitters.Repository.Interface
     {
         public Task<List<Service>> GetAllServicesAsync();
         public Task<Service> SearchServiceAsync(long ID);
-        public Task AddServiceAsync(string name, string description, decimal price);
+        public Task AddServiceAsync(string name, string description, double price);
         public Task DeleteServiceAsync(long ID);
     }
 }

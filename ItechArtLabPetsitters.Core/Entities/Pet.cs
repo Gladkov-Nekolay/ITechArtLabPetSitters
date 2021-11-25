@@ -8,6 +8,15 @@ namespace ItechArtLabPetsitters.Repository.Entities
 {
     public class Pet
     {
+        public Pet(string petName, string petType, byte age, string description, long ownerID)
+        {
+            PetName = petName;
+            PetType = petType;
+            Age = age;
+            Description = description;
+            OwnerID = ownerID;
+        }
+
         [Key]
         public long ID { set; get; }
         public string PetName { set; get; }
@@ -15,12 +24,7 @@ namespace ItechArtLabPetsitters.Repository.Entities
         public byte Age { set; get; }
         public string Description { set; get; }
         public List<Order> Orders { set; get; }
-        public Pet(string petName, string petType, byte age, string description)
-        {
-            PetName = petName;
-            PetType = petType;
-            Age = age;
-            Description = description;
-        }
+        public long OwnerID { set; get; }
+        public User Owner { set; get; }
     }
 }

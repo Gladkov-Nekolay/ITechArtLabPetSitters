@@ -12,5 +12,6 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
         public Task AddReviewAsync(long petsitterID, long clientID, byte mark, string comment);
         public Task DeleteReviewAsync(long ID);
         public Task<List<Review>> GetAllReviewAsync();
+        public Task<List<Review>> GetReviewsForUser(long ID);
     }
 }

@@ -34,12 +34,12 @@ namespace ItechArtLabPetsitters.Web.Controllers
         }
 
         [HttpPost("service/{name}")]
-        public async Task PostServiceAsync(string name, string description, decimal price)
+        public async Task PostServiceAsync(string name, string description, double price)
         {
             await service.AddServiceAsync(name, description, price);
         }
         [HttpDelete("DeleteService/{ID}")]
-        public async Task DeleteServiceAsync(long ID) 
+        public async Task DeleteServiceAsync(long ID)
         {
             await service.DeleteServiceAsync(ID);
         }

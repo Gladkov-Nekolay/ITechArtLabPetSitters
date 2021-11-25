@@ -9,7 +9,7 @@ namespace ItechArtLabPetsitters.Repository.Interface
 {
     public interface IPetsRepository
     {
-        public Task AddPetAsync(string petName, string petType, byte age, string description);
+        public Task AddPetAsync(string petName, string petType, byte age, string description, long OwnerID);
         public Task<List<Pet>> GetAllPetsAsync();
         public Task DeletePetAsync(long ID);
     }

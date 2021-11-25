@@ -8,17 +8,18 @@ namespace ItechArtLabPetsitters.Repository.Entities
 {
     public class Service
     {
-        [Key]
-        public long ID { set; get; }
-        public string ServiceName { set; get; }
-        public string Description { set; get; }
-        public decimal Price { set; get; }
-        public List<Order> Orders { set; get; }
-        public Service(string serviceName, string description, decimal price)
+        public Service(string serviceName, string description, double price)
         {
             ServiceName = serviceName;
             Description = description;
             Price = price;
         }
+
+        [Key]
+        public long ID { set; get; }
+        public string ServiceName { set; get; }
+        public string Description { set; get; }
+        public double Price { set; get; }
+        public List<Order> Orders { set; get; }
     }
 }

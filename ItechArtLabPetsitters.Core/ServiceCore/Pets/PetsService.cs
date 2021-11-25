@@ -15,9 +15,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             _PetsRepository = PetsRepository;
         }
-        public async Task AddPetAsync(string petName, string petType, byte age, string description)
+        public async Task AddPetAsync(string petName, string petType, byte age, string description, long OwnerID)
         {
-             await _PetsRepository.AddPetAsync(petName, petType, age, description);
+             await _PetsRepository.AddPetAsync(petName, petType, age, description,OwnerID);
         }
 
         public async Task DeletePetAsync(long ID)

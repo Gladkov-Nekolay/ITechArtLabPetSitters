@@ -18,9 +18,9 @@ namespace ItechArtLabPetsitters.Web.Controllers
             this.service = service;
         }
         [HttpPost("Pets/{petName}")]
-        public async Task AsyncPostPet(string petName, string petType, byte age, string description)
+        public async Task AsyncPostPet(string petName, string petType, byte age, string description, long OwnerID)
         {
-            await service.AddPetAsync(petName, petType, age, description);
+            await service.AddPetAsync(petName, petType, age, description,OwnerID);
         }
         [HttpDelete]
         public async Task DeletePetAsync(long ID)
