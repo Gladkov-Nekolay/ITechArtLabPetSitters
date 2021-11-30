@@ -10,7 +10,7 @@ namespace ItechArtLabPetsitters.Core.Interface
 {
     public interface IUserRepository
     {
-        public Task CreateUserAsync(UserModel model);
+        public Task CreateUserAsync(UserCreationModel model);
         public Task<List<User>> GetAllUsersAsync();
         public Task DeleteUserAsync(long ID);
     }

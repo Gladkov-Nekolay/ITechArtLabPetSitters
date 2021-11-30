@@ -25,7 +25,7 @@ namespace ItechArtLabPetsitters.Web.Controllers
             await service.CancelDoerOrderAsync(OrderID);
         }
         [HttpPost]
-        public async Task CreateClientOrderAsync(OrderModel model)
+        public async Task CreateClientOrderAsync(OrderCreationModel model)
         {
             await service.CreateClientOrderAsync(model);
         }

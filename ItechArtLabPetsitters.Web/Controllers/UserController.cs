@@ -20,7 +20,7 @@ namespace ItechArtLabPetsitters.Web.Controllers
             this.service = service;
         }
         [HttpPost]
-        public async Task CreateUserAsync(UserModel model) 
+        public async Task CreateUserAsync(UserCreationModel model) 
         {
             await service.CreateUserAsync(model);
         }

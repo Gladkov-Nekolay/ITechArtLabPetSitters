@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.Interface;
 
@@ -15,9 +16,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             _PetsRepository = PetsRepository;
         }
-        public async Task AddPetAsync(string petName, string petType, byte age, string description, long OwnerID)
+        public async Task AddPetAsync(PetCreationModel model)
         {
-             await _PetsRepository.AddPetAsync(petName, petType, age, description,OwnerID);
+             await _PetsRepository.AddPetAsync(model);
         }
 
         public async Task DeletePetAsync(long ID)

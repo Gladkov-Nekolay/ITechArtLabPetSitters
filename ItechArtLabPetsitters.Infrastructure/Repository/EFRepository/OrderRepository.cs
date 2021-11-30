@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using ItechArtLabPetsitters.Core.Interface;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Infrastructure.Context;
@@ -14,7 +15,12 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
     public class OrderRepository: IOrderRepository
     {
         private readonly PetsittersContext _dbContext;
-        public OrderRepository(PetsittersContext context) => this._dbContext = context;
+        private readonly IMapper mapper;
+        public OrderRepository(PetsittersContext context, IMapper Mapper)
+        {
+            this._dbContext = context;
+            this.mapper = Mapper;
+        }
 
         public async Task CancelDoerOrderAsync(long OrderID)
         {
@@ -24,18 +30,9 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task CreateClientOrderAsync(OrderModel model)
+        public async Task CreateClientOrderAsync(OrderCreationModel model)
         {
-            _dbContext.Orders.Add
-                (new Order
-                {
-                    ServiceID=model.serviceID,
-                    PetID=model.petID,
-                    PetsitterID=model.petsitterID,
-                    ClientID=model.clientID,
-                    Comment=model.comment
-                }
-                );
+            _dbContext.Orders.Add(mapper.Map<OrderCreationModel, Order>(model));
             await _dbContext.SaveChangesAsync(); 
         }
 

@@ -20,7 +20,7 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Order
             await _OrdersRepository.CancelDoerOrderAsync(OrderID);
         }
 
-        public async Task CreateClientOrderAsync(OrderModel model)
+        public async Task CreateClientOrderAsync(OrderCreationModel model)
         {
             await _OrdersRepository.CreateClientOrderAsync(model);
         }

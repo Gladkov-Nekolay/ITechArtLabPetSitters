@@ -7,13 +7,20 @@ using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.Interface;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using ItechArtLabPetsitters.Core.Models;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
     public class ServiceEFRepository : IServicesRepository
     {
         private readonly PetsittersContext _dbContext;
-        public ServiceEFRepository(PetsittersContext context) => this._dbContext = context;
+        private readonly IMapper mapper;
+        public ServiceEFRepository(PetsittersContext context, IMapper Mapper) 
+        { 
+            this._dbContext = context;
+            this.mapper = Mapper;
+        }
         public async Task <List<Service>> GetAllServicesAsync()
         {
             return await _dbContext.Services.ToListAsync();
@@ -23,9 +30,10 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         {
             return await _dbContext.Services.FirstAsync(p=>p.ID==ID);
         }
-        public async Task AddServiceAsync(string name, string description, double price) 
+        public async Task AddServiceAsync(ServiceCreationModel model) 
         {
-            _dbContext.Services.Add(new Service(name, description, price));
+            Service AddedService = mapper.Map<ServiceCreationModel, Service>(model);
+            _dbContext.Services.Add(AddedService);
             await _dbContext.SaveChangesAsync();
         }
         public async Task DeleteServiceAsync(long id) 

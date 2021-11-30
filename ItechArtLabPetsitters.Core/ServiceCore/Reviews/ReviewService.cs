@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.Interface;
 
@@ -15,9 +16,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
         {
             _ReviewRepository = ReviewRepository;
         }
-        public async Task AddReviewAsync(long petsitterID, long clientID, byte mark, string comment)
+        public async Task AddReviewAsync(ReviewCreationModel model)
         {
-            await _ReviewRepository.AddReviewAsync(petsitterID, clientID, mark, comment);
+            await _ReviewRepository.AddReviewAsync(model);
         }
 
         public async Task<List<Review>> GetAllReviewAsync()

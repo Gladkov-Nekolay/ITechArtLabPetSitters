@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 
 namespace ItechArtLabPetsitters.Repository.ServiceCore
@@ -11,7 +12,7 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
     {
         public Task <List<Service>> GetAllServicesAsync();
         public Task <Service> SearchServiceAsync(long ID);
-        public Task AddServiceAsync(string name, string description, double price);
+        public Task AddServiceAsync(ServiceCreationModel model);
         public Task DeleteServiceAsync(long ID);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using ItechArtLabPetsitters.Core.Interface;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Infrastructure.Context;
@@ -13,16 +14,17 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
     public class UserRepository:IUserRepository
     {
-        public readonly PetsittersContext _dbContext;
-        public UserRepository(PetsittersContext context) => this._dbContext = context;
-
-        public async Task CreateUserAsync(UserModel model)
+        private readonly PetsittersContext _dbContext;
+        private readonly IMapper mapper;
+        public UserRepository(PetsittersContext context,IMapper Mapper)
         {
-            _dbContext.Users.Add
-                (new User{
-                    Email = model.Email,
-                    Name = model.Name}
-                );
+            this._dbContext = context;
+            this.mapper = Mapper;
+        }
+
+        public async Task CreateUserAsync(UserCreationModel model)
+        { 
+            _dbContext.Users.Add(mapper.Map<UserCreationModel, User>(model));
             await _dbContext.SaveChangesAsync();
         }
         public async Task DeleteUserAsync(long ID)

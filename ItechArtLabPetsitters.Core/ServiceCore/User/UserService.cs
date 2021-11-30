@@ -17,7 +17,7 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
             _UserRepository = userRepository;
         }
 
-        public async Task CreateUserAsync(UserModel model)
+        public async Task CreateUserAsync(UserCreationModel model)
         {
             await _UserRepository.CreateUserAsync(model);
         }

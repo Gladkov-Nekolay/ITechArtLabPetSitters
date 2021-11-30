@@ -7,17 +7,25 @@ using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.Interface;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using ItechArtLabPetsitters.Core.Models;
+using AutoMapper;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
     public class RewiewEFRepository:IReviewRepository
     {
         private readonly PetsittersContext _dbContext;
-        public RewiewEFRepository(PetsittersContext context) => this._dbContext = context;
-
-        public async Task AddReviewAsync(long petsitterID, long clientID, byte mark, string comment)
+        private readonly IMapper mapper;
+        public RewiewEFRepository(PetsittersContext context,IMapper Mapper)
         {
-            _dbContext.Reviews.Add(new Review(petsitterID,clientID,mark,comment));
+            this._dbContext = context;
+            this.mapper = Mapper;
+        }
+
+        public async Task AddReviewAsync(ReviewCreationModel model)
+        {
+            Review AddedReview = mapper.Map<ReviewCreationModel, Review>(model);
+            _dbContext.Reviews.Add(AddedReview);
             await _dbContext.SaveChangesAsync();
         }
 

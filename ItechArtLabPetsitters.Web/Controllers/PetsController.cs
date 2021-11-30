@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.ServiceCore;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +18,10 @@ namespace ItechArtLabPetsitters.Web.Controllers
         {
             this.service = service;
         }
-        [HttpPost("Pets/{petName}")]
-        public async Task AsyncPostPet(string petName, string petType, byte age, string description, long OwnerID)
+        [HttpPost]
+        public async Task AsyncPostPet(PetCreationModel model)
         {
-            await service.AddPetAsync(petName, petType, age, description,OwnerID);
+            await service.AddPetAsync(model);
         }
         [HttpDelete]
         public async Task DeletePetAsync(long ID)

@@ -19,6 +19,7 @@ using ItechArtLabPetsitters.Repository.ServiceCore.Reviews;
 using Microsoft.EntityFrameworkCore;
 using ItechArtLabPetsitters.Core.Interface;
 using ItechArtLabPetsitters.Core.ServiceCore.Order;
+using ItechArtLabPetsitters.Core.Profiles;
 
 namespace ItechArtLabPetsitters.Web
 {
@@ -47,6 +48,15 @@ namespace ItechArtLabPetsitters.Web
             services.AddScoped<IReviewRepository,RewiewEFRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+
+            //automapping
+            services.AddAutoMapper(
+               typeof(UserProfile),
+               typeof(OrderProfile),
+               typeof(ServiceProfile),
+               typeof(PetProfile),
+               typeof(ReviewProfile)
+               );
 
             services.AddDbContext<PetsittersContext>(context=>context.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             

@@ -7,16 +7,24 @@ using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.Interface;
 using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using ItechArtLabPetsitters.Core.Models;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
     public class PetsEFRepository : IPetsRepository
     {
         private readonly PetsittersContext _dbContext;
-        public PetsEFRepository(PetsittersContext context) => this._dbContext = context;
-        public async Task AddPetAsync(string petName, string petType, byte age, string description,long OwnerID)
+        private readonly IMapper mapper;
+        public PetsEFRepository(PetsittersContext context, IMapper Mapper)
         {
-            _dbContext.Pets.Add(new Pet(petName, petType, age, description,OwnerID));
+            this._dbContext = context;
+            this.mapper = Mapper;
+        }
+        public async Task AddPetAsync(PetCreationModel model)
+        {
+            Pet AddedPet = mapper.Map<PetCreationModel, Pet>(model);
+            _dbContext.Pets.Add(AddedPet);
             await _dbContext.SaveChangesAsync(); 
         }
 
