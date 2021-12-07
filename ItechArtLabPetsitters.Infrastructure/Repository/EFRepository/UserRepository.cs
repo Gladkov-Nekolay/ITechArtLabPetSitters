@@ -29,7 +29,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         }
         public async Task DeleteUserAsync(long ID)
         {
-            User DeletedUser = await _dbContext.Users.FirstAsync(p => p.ID == ID);
+            User DeletedUser = await _dbContext.Users.FirstAsync(p => p.Id == ID);
             _dbContext.Users.Remove(DeletedUser);
             await _dbContext.SaveChangesAsync();
         }

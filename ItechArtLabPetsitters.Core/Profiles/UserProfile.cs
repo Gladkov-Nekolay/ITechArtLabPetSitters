@@ -14,7 +14,7 @@ namespace ItechArtLabPetsitters.Core.Profiles
         public UserProfile() 
         {
             CreateMap<User, UserCreationModel>().ForMember(u => u.Email, option => option.MapFrom(src => src.Email))
-                                                .ForMember(u => u.Name, option => option.MapFrom(src=>src.Name))
+                                                .ForMember(u => u.Name, option => option.MapFrom(src=>src.FirstName))
                                                 .ReverseMap();
         }
     }

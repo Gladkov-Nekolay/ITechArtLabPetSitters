@@ -6,15 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Repository.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace ItechArtLabPetsitters.Repository.Entities
 {
-    public class User
+    public class User : IdentityUser<long>
     {
-        [Key]
-        public long ID { set; get; }
-        public string Email { set; get; }
-        public string Name { set; get; }
+        public string FirstName { get; set; }
+        //[Key]
+        //public long ID { set; get; }
+        //public string Name { set; get; }
         public List<Review> Reviews { set; get; }
         [InverseProperty("Petsitter")]
         public List<Order> DoerOrders { set; get; } // список заказов как исполнитель

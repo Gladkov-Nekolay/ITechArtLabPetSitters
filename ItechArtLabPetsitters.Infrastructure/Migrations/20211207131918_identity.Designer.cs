@@ -4,14 +4,16 @@ using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ItechArtLabPetsitters.Infrastructure.Migrations
 {
     [DbContext(typeof(PetsittersContext))]
-    partial class PetsittersContextModelSnapshot : ModelSnapshot
+    [Migration("20211207131918_identity")]
+    partial class identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
