@@ -12,11 +12,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
-    public class OrderRepository: IOrderRepository
+    public class OrderEFRepository: IOrderRepository
     {
         private readonly PetsittersContext _dbContext;
         private readonly IMapper mapper;
-        public OrderRepository(PetsittersContext context, IMapper Mapper)
+        public OrderEFRepository(PetsittersContext context, IMapper Mapper)
         {
             this._dbContext = context;
             this.mapper = Mapper;

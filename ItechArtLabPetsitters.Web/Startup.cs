@@ -47,7 +47,7 @@ namespace ItechArtLabPetsitters.Web
             services.AddScoped<IPetsRepository, PetsEFRepository>();
             services.AddScoped<IReviewRepository,RewiewEFRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderRepository, OrderEFRepository>();
 
             //automapping
             services.AddAutoMapper(
