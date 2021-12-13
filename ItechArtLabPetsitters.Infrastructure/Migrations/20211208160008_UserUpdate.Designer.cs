@@ -4,14 +4,16 @@ using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ItechArtLabPetsitters.Infrastructure.Migrations
 {
     [DbContext(typeof(PetsittersContext))]
-    partial class PetsittersContextModelSnapshot : ModelSnapshot
+    [Migration("20211208160008_UserUpdate")]
+    partial class UserUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,29 +231,6 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            ConcurrencyStamp = "f9a2d0a6-bd0a-4fdc-9dd8-a077290f2570",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            ConcurrencyStamp = "ada4818e-ca68-43e4-b4ef-d801be875cac",
-                            Name = "Petsitter",
-                            NormalizedName = "PETSITTER"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            ConcurrencyStamp = "590e33a5-c12d-488d-b0fa-f5b857294332",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
@@ -408,7 +387,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("ItechArtLabPetsitters.Repository.Entities.User", "Petsitter")
-                        .WithMany("WritenReviews")
+                        .WithMany("WritedReviews")
                         .HasForeignKey("PetsitterID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -489,7 +468,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Migrations
 
                     b.Navigation("ReviewsList");
 
-                    b.Navigation("WritenReviews");
+                    b.Navigation("WritedReviews");
                 });
 #pragma warning restore 612, 618
         }

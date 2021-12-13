@@ -16,7 +16,10 @@ namespace ItechArtLabPetsitters.Repository.Entities
         //[Key]
         //public long ID { set; get; }
         //public string Name { set; get; }
-        public List<Review> Reviews { set; get; }
+        [InverseProperty("Petsitter")]
+        public List<Review> WritenReviews { set; get; }
+        [InverseProperty("Client")]
+        public List<Review> ReviewsList { set; get; }
         [InverseProperty("Petsitter")]
         public List<Order> DoerOrders { set; get; } // список заказов как исполнитель
         [InverseProperty("Client")]

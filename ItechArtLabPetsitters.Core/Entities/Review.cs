@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +20,12 @@ namespace ItechArtLabPetsitters.Repository.Entities
 
         [Key]
         public long ReviewID { set; get; }
+        [ForeignKey("ReviewsList")]
         public long PetsitterID { set; get; }
-        //public User Petsitter { set; get; }
+        public User Petsitter { set; get; }
+        [ForeignKey("WritenReviews")]
         public long ClientID { set; get; }
-        public User user/*Client*/ { set; get; }
+        public User Client { set; get; }
         public byte Mark { set; get; }
         public string Comment { set; get; }
     }

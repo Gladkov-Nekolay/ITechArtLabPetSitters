@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItechArtLabPetsitters.Web", "ItechArtLabPetsitters.Web\ItechArtLabPetsitters.Web.csproj", "{B6E8E9D5-DDD3-4B3E-9F5D-BA888370309B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItechArtLabPetsitters.Infrastructure", "ItechArtLabPetsitters.Infrastructure\ItechArtLabPetsitters.Infrastructure.csproj", "{8F796A83-02E3-440C-981B-2997D4BB088B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItechArtLabPetsitters.Infrastructure", "ItechArtLabPetsitters.Infrastructure\ItechArtLabPetsitters.Infrastructure.csproj", "{8F796A83-02E3-440C-981B-2997D4BB088B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItechArtLabPetsitters.Core", "ItechArtLabPetsitters.Core\ItechArtLabPetsitters.Core.csproj", "{9A47E79D-2B2F-48B4-8626-D2CF223C52DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItechArtLabPetsitters.Core", "ItechArtLabPetsitters.Core\ItechArtLabPetsitters.Core.csproj", "{9A47E79D-2B2F-48B4-8626-D2CF223C52DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8B9FD3AB-449B-4697-A52C-6F38AFC1FF6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
