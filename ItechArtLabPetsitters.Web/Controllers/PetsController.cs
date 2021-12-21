@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.ServiceCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Web.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PetsController : ControllerBase
@@ -18,16 +20,19 @@ namespace ItechArtLabPetsitters.Web.Controllers
         {
             this.service = service;
         }
+        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task AsyncPostPet(PetCreationModel model)
         {
             await service.AddPetAsync(model);
         }
+        [Authorize(Roles = "User")]
         [HttpDelete]
         public async Task DeletePetAsync(long ID)
         {
             await service.DeletePetAsync(ID);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("Pets")]
         public Task<List<Pet>> GetAll()

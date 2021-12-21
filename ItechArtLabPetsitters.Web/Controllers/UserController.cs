@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.ServiceCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Web.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -19,20 +21,33 @@ namespace ItechArtLabPetsitters.Web.Controllers
         {
             this.service = service;
         }
+        [AllowAnonymous]
+        [Route("[action]")]
         [HttpPost]
-        public async Task CreateUserAsync(UserCreationModel model) 
+        public async Task CreateUserAsync(UserCreationModel model)
         {
-            await service.CreateUserAsync(model);
+           await service.RegisterAsync(model);
         }
+        [Authorize(Roles = "User")]
+        [Route("[action]")]
         [HttpDelete]
-        public async Task DeleteUserAsync(long ID) 
+        public async Task DeleteUserAsync(long ID)
         {
-            await service.DeleteUserAsync(ID);
+
         }
+        [Authorize(Roles = "Admin")]
+        [Route("[action]")]
         [HttpGet]
-        public async Task<List<User>> GetAllUsersAsync() 
+        public async Task<List<User>> GetAllUsersAsync()
         {
             return await service.GetAllUsersAsync();
+        }
+        [AllowAnonymous]
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] UserAuthentificationModel model) 
+        {
+            return Ok(await service.LoginUserAsync(model));
         }
     }
 }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ItechArtLabPetsitters.Core.Models
 {
-    public class UserCreationModel
+    public class UserAuthentificationModel
     {
-        public string Email { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
+        public string Email { set; get; }
+        public string Password { set; get; }
     }
 }

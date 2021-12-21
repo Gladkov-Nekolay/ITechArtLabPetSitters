@@ -21,21 +21,10 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             this._dbContext = context;
             this.mapper = Mapper;
         }
-
-        public async Task CreateUserAsync(UserCreationModel model)
-        { 
-            _dbContext.Users.Add(mapper.Map<UserCreationModel, User>(model));
-            await _dbContext.SaveChangesAsync();
-        }
-        public async Task DeleteUserAsync(long ID)
-        {
-            User DeletedUser = await _dbContext.Users.FirstAsync(p => p.Id == ID);
-            _dbContext.Users.Remove(DeletedUser);
-            await _dbContext.SaveChangesAsync();
-        }
         public async Task<List<User>> GetAllUsersAsync() 
         {
             return await _dbContext.Users.ToListAsync();
         }
+
     }
 }
