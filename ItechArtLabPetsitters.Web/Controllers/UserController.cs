@@ -47,6 +47,10 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UserAuthentificationModel model) 
         {
+            if (!ModelState.IsValid) 
+            {
+                return new BadRequestObjectResult("Data is invalid");
+            }
             return Ok(await service.LoginUserAsync(model));
         }
     }
