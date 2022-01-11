@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
-using ItechArtLabPetsitters.Core.ServiceCore.Order;
+using ItechArtLabPetsitters.Core.ServiceCore.Orders;
+using ItechArtLabPetsitters.Repository.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,20 @@ namespace ItechArtLabPetsitters.Web.Controllers
         public async Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID)
         {
             return await service.TakeDoerOrderAsync(OrderID, DoerID);
+        }
+        [Authorize(Roles = "Petsitter")]
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<List<Order>> GetAvaliableOrderListAsync() 
+        {
+            return await service.GetAvaliableOrderListAsync();
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<List<Order>> GetAllOrdersListAsync()
+        {
+            return await service.GetAllOrdersAsync();
         }
     }
 }

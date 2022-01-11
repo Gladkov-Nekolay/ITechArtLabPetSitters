@@ -26,9 +26,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             return await _PetsRepository.DeletePetAsync(ID);
         }
-        public async Task<List<Pet>> GetAllPetsAsync()
+        public async Task<List<Pet>> GetUserPetsAsync(long userID)
         {
-            return await _PetsRepository.GetAllPetsAsync();
+            return await _PetsRepository.GetUserPetsAsync(userID);
         }
     }
 }

@@ -32,12 +32,12 @@ namespace ItechArtLabPetsitters.Web.Controllers
         {
             return await service.DeletePetAsync(ID);
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         [HttpGet]
-        [Route("Pets")]
-        public Task<List<Pet>> GetAll()
+        [Route("UserPets")]
+        public Task<List<Pet>> GetUserPets(long userID)
         {
-            return service.GetAllPetsAsync();
+            return service.GetUserPetsAsync(userID);
         }
     }
 }

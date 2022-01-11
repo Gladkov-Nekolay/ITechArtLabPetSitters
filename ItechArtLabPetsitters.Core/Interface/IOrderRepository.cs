@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
+using ItechArtLabPetsitters.Repository.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Core.Interface
@@ -14,5 +15,7 @@ namespace ItechArtLabPetsitters.Core.Interface
         public Task<ActionResult> DeleteOrderAsync(long OrderID);
         public Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID);
         public Task<ActionResult> CancelDoerOrderAsync(long OrderID);
+        public Task<List<Order>> GetAvaliableOrderListAsync();
+        public Task<List<Order>> GetAllOrdersListAsync();
     }
 }

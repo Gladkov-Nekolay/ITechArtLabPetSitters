@@ -18,7 +18,7 @@ using ItechArtLabPetsitters.Repository.Interface;
 using ItechArtLabPetsitters.Repository.ServiceCore.Reviews;
 using Microsoft.EntityFrameworkCore;
 using ItechArtLabPetsitters.Core.Interface;
-using ItechArtLabPetsitters.Core.ServiceCore.Order;
+using ItechArtLabPetsitters.Core.ServiceCore.Orders;
 using ItechArtLabPetsitters.Core.Profiles;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;

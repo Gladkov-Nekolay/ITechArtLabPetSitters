@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Interface;
 using ItechArtLabPetsitters.Core.Models;
+using ItechArtLabPetsitters.Repository.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ItechArtLabPetsitters.Core.ServiceCore.Order
+namespace ItechArtLabPetsitters.Core.ServiceCore.Orders
 {
     public class OrderService : IOrdersService
     {
@@ -34,6 +35,14 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Order
         public async Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID)
         {
             return await _OrdersRepository.TakeDoerOrderAsync(OrderID, DoerID);
+        }
+        public async Task<List<Order>> GetAvaliableOrderListAsync() 
+        {
+            return await _OrdersRepository.GetAvaliableOrderListAsync();
+        }
+        public async Task<List<Order>> GetAllOrdersAsync() 
+        {
+            return await _OrdersRepository.GetAllOrdersListAsync();
         }
     }
 }

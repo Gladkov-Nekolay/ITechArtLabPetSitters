@@ -37,9 +37,9 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             await _dbContext.SaveChangesAsync();
             return new OkResult();
         }
-        public async Task<List<Pet>> GetAllPetsAsync()
+        public async Task<List<Pet>> GetUserPetsAsync(long userID)
         {
-            return await _dbContext.Pets.ToListAsync();
+            return await _dbContext.Pets.Where(o=>o.OwnerID==userID).ToListAsync();
         }
     }
 }

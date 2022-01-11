@@ -13,6 +13,6 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
     {
         public Task<ActionResult> AddPetAsync(PetCreationModel model);
         public Task<ActionResult> DeletePetAsync(long ID);
-        public Task<List<Pet>> GetAllPetsAsync(); 
+        public Task<List<Pet>> GetUserPetsAsync(long userID); 
     }
 }
