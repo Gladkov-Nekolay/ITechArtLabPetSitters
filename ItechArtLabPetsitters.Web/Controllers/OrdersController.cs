@@ -23,30 +23,28 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [Authorize(Roles = "Petsitter")]
         [HttpPut]
         [Route("[action]")]
-        public async Task CancelDoerOrderAsync(long OrderID)
+        public async Task<ActionResult> CancelDoerOrderAsync(long OrderID)
         {
-            await service.CancelDoerOrderAsync(OrderID);
+            return await service.CancelDoerOrderAsync(OrderID);
         }
         [Authorize(Roles = "User")]
         [HttpPost]
-        public async Task CreateClientOrderAsync(OrderCreationModel model)
+        public async Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model)
         {
-            await service.CreateClientOrderAsync(model);
+            return await service.CreateClientOrderAsync(model);
         }
         [Authorize(Roles = "User")]
         [HttpDelete]
-        public async Task DeleteOrderAsync(long OrderID)
+        public async Task<ActionResult> DeleteOrderAsync(long OrderID)
         {
-            await service.DeleteOrderAsync(OrderID);
+            return await service.DeleteOrderAsync(OrderID);
         }
         [Authorize(Roles = "Petsitter")]
         [HttpPut]
         [Route("[action]")]
-        public async Task TakeDoerOrderAsync(long OrderID, long DoerID)
+        public async Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID)
         {
-            await service.TakeDoerOrderAsync(OrderID, DoerID);
+            return await service.TakeDoerOrderAsync(OrderID, DoerID);
         }
-
-
     }
 }

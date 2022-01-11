@@ -29,11 +29,12 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
             mapper = Mapper;
         }
 
-        public async Task RegisterAsync(UserCreationModel model)
+        public async Task <ActionResult> RegisterAsync(UserCreationModel model)
         {
             User user = mapper.Map<UserCreationModel, User>(model);
             var result = await _UserManager.CreateAsync(user,model.Password);
             await _UserManager.AddToRoleAsync(user, RolesNames.USER);
+            return new OkResult();
         }
 
         public async Task<List<User>> GetAllUsersAsync() 

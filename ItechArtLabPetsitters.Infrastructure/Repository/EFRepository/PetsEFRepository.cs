@@ -9,6 +9,7 @@ using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using ItechArtLabPetsitters.Core.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
@@ -21,18 +22,20 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             this._dbContext = context;
             this.mapper = Mapper;
         }
-        public async Task AddPetAsync(PetCreationModel model)
+        public async Task<ActionResult> AddPetAsync(PetCreationModel model)
         {
             Pet AddedPet = mapper.Map<PetCreationModel, Pet>(model);
             _dbContext.Pets.Add(AddedPet);
-            await _dbContext.SaveChangesAsync(); 
+            await _dbContext.SaveChangesAsync();
+            return new OkResult();
         }
 
-        public async Task DeletePetAsync(long ID)
+        public async Task<ActionResult> DeletePetAsync(long ID)
         {
             Pet deletedPet = await _dbContext.Pets.FirstAsync(p => p.ID == ID); 
             _dbContext.Pets.Remove(deletedPet);
             await _dbContext.SaveChangesAsync();
+            return new OkResult();
         }
         public async Task<List<Pet>> GetAllPetsAsync()
         {

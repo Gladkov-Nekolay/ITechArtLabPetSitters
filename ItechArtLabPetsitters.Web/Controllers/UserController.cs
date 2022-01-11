@@ -24,9 +24,13 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [AllowAnonymous]
         [Route("[action]")]
         [HttpPost]
-        public async Task CreateUserAsync(UserCreationModel model)
+        public async Task<ActionResult> CreateUserAsync(UserCreationModel model)
         {
-           await service.RegisterAsync(model);
+            if (!ModelState.IsValid) 
+            {
+                return ValidationProblem();
+            }
+            return await service.RegisterAsync(model);
         }
         [Authorize(Roles = "User")]
         [Route("[action]")]
@@ -49,7 +53,7 @@ namespace ItechArtLabPetsitters.Web.Controllers
         {
             if (!ModelState.IsValid) 
             {
-                return new BadRequestObjectResult("Data is invalid");
+                return ValidationProblem();
             }
             return Ok(await service.LoginUserAsync(model));
         }

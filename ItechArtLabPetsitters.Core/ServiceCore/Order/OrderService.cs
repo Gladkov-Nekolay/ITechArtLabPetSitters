@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Interface;
 using ItechArtLabPetsitters.Core.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Core.ServiceCore.Order
 {
@@ -15,24 +16,24 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Order
         {
             _OrdersRepository = orderRepository;
         }
-        public async Task CancelDoerOrderAsync(long OrderID)
+        public async Task<ActionResult> CancelDoerOrderAsync(long OrderID)
         {
-            await _OrdersRepository.CancelDoerOrderAsync(OrderID);
+            return await _OrdersRepository.CancelDoerOrderAsync(OrderID);
         }
 
-        public async Task CreateClientOrderAsync(OrderCreationModel model)
+        public async Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model)
         {
-            await _OrdersRepository.CreateClientOrderAsync(model);
+            return await _OrdersRepository.CreateClientOrderAsync(model);
         }
 
-        public async Task DeleteOrderAsync(long OrderID)
+        public async Task<ActionResult> DeleteOrderAsync(long OrderID)
         {
-            await _OrdersRepository.DeleteOrderAsync(OrderID);
+            return await _OrdersRepository.DeleteOrderAsync(OrderID);
         }
 
-        public async Task TakeDoerOrderAsync(long OrderID, long DoerID)
+        public async Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID)
         {
-            await _OrdersRepository.TakeDoerOrderAsync(OrderID, DoerID);
+            return await _OrdersRepository.TakeDoerOrderAsync(OrderID, DoerID);
         }
     }
 }

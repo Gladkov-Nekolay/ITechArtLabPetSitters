@@ -22,15 +22,15 @@ namespace ItechArtLabPetsitters.Web.Controllers
         }
         [Authorize(Roles = "User")]
         [HttpPost]
-        public async Task AsyncPostPet(PetCreationModel model)
+        public async Task<ActionResult> AsyncPostPet(PetCreationModel model)
         {
-            await service.AddPetAsync(model);
+            return await service.AddPetAsync(model);
         }
         [Authorize(Roles = "User")]
         [HttpDelete]
-        public async Task DeletePetAsync(long ID)
+        public async Task<ActionResult> DeletePetAsync(long ID)
         {
-            await service.DeletePetAsync(ID);
+            return await service.DeletePetAsync(ID);
         }
         [Authorize(Roles = "Admin")]
         [HttpGet]

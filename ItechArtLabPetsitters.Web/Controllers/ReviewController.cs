@@ -24,15 +24,15 @@ namespace ItechArtLabPetsitters.Web.Controllers
         }
         [Authorize(Roles = "User")]
         [HttpPost]
-        public async Task AddReviewAsync(ReviewCreationModel model)
+        public async Task <ActionResult> AddReviewAsync(ReviewCreationModel model)
         {
-            await service.AddReviewAsync(model);
+            return await service.AddReviewAsync(model);
         }
         [Authorize(Roles = "User")]
         [HttpDelete]
-        public async Task DeleteReviewAsync(long ID)
+        public async Task <ActionResult> DeleteReviewAsync(long ID)
         {
-            await service.DeleteReviewAsync(ID);
+            return await service.DeleteReviewAsync(ID);
         }
         [Authorize(Roles = "Admin")]
         [Route("[action]")]

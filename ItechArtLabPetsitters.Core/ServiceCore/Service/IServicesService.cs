@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Repository.ServiceCore
 {
@@ -12,7 +13,7 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
     {
         public Task <List<Service>> GetAllServicesAsync();
         public Task <Service> SearchServiceAsync(long ID);
-        public Task AddServiceAsync(ServiceCreationModel model);
-        public Task DeleteServiceAsync(long ID);
+        public Task <ActionResult> AddServiceAsync(ServiceCreationModel model);
+        public Task <ActionResult> DeleteServiceAsync(long ID);
     }
 }

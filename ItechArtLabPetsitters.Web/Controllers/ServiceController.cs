@@ -38,15 +38,19 @@ namespace ItechArtLabPetsitters.Web.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task PostServiceAsync(ServiceCreationModel model)
+        public async Task<ActionResult> PostServiceAsync(ServiceCreationModel model)
         {
-            await service.AddServiceAsync(model);
+            if (!ModelState.IsValid)
+            {
+                return ValidationProblem();
+            }
+            return await service.AddServiceAsync(model);
         }
         [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteService/{ID}")]
-        public async Task DeleteServiceAsync(long ID)
+        public async Task<ActionResult> DeleteServiceAsync(long ID)
         {
-            await service.DeleteServiceAsync(ID);
+            return await service.DeleteServiceAsync(ID);
         }
     }
 }

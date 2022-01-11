@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.Interface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Repository.ServiceCore
 {
@@ -16,14 +17,14 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             _PetsRepository = PetsRepository;
         }
-        public async Task AddPetAsync(PetCreationModel model)
+        public async Task<ActionResult> AddPetAsync(PetCreationModel model)
         {
-             await _PetsRepository.AddPetAsync(model);
+             return await _PetsRepository.AddPetAsync(model);
         }
 
-        public async Task DeletePetAsync(long ID)
+        public async Task<ActionResult> DeletePetAsync(long ID)
         {
-            await _PetsRepository.DeletePetAsync(ID);
+            return await _PetsRepository.DeletePetAsync(ID);
         }
         public async Task<List<Pet>> GetAllPetsAsync()
         {

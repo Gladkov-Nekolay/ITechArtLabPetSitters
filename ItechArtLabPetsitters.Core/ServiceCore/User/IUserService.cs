@@ -15,7 +15,7 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
     {
         public JwtSecurityToken GetNewToken(List <Claim> claims);//токены из клеймов
         public List<Claim> GetClaims(User user, IList<string> UserRoles);
-        public Task RegisterAsync(UserCreationModel model);
+        public Task <ActionResult> RegisterAsync(UserCreationModel model);
         public Task <IActionResult> LoginUserAsync(UserAuthentificationModel model);
         public Task<List<User>> GetAllUsersAsync();
     }

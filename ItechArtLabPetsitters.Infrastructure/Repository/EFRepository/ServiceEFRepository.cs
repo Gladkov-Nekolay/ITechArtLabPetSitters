@@ -9,6 +9,7 @@ using ItechArtLabPetsitters.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using ItechArtLabPetsitters.Core.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
 {
@@ -30,17 +31,19 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         {
             return await _dbContext.Services.FirstAsync(p=>p.ID==ID);
         }
-        public async Task AddServiceAsync(ServiceCreationModel model) 
+        public async Task <ActionResult> AddServiceAsync(ServiceCreationModel model) 
         {
             Service AddedService = mapper.Map<ServiceCreationModel, Service>(model);
             _dbContext.Services.Add(AddedService);
             await _dbContext.SaveChangesAsync();
+            return new OkResult();
         }
-        public async Task DeleteServiceAsync(long id) 
+        public async Task <ActionResult> DeleteServiceAsync(long id) 
         {
             Service deletedService = await _dbContext.Services.FirstAsync(p => p.ID == id); 
             _dbContext.Services.Remove(deletedService);
             await _dbContext.SaveChangesAsync();
+            return new OkResult();
         }
     }
 }

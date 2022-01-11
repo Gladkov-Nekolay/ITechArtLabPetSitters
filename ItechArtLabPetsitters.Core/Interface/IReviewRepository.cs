@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Repository.Interface
 {
     public interface IReviewRepository
     {
-        public Task AddReviewAsync(ReviewCreationModel model);
+        public Task <ActionResult> AddReviewAsync(ReviewCreationModel model);
         public Task<List<Review>> GetAllReviewAsync();
         public Task<List<Review>> GetReviewsForUser(long ID);
-        public Task DeleteReviewAsync(long ID);
+        public Task <ActionResult> DeleteReviewAsync(long ID);
     }
 }

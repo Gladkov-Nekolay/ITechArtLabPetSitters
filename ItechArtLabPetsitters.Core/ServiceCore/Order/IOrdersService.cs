@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Core.ServiceCore.Order
 {
     public interface IOrdersService
     {
-        public Task CreateClientOrderAsync(OrderCreationModel model);
-        public Task DeleteOrderAsync(long OrderID);
-        public Task TakeDoerOrderAsync(long OrderID, long DoerID);
-        public Task CancelDoerOrderAsync(long OrderID);
+        public Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model);
+        public Task<ActionResult> DeleteOrderAsync(long OrderID);
+        public Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID);
+        public Task<ActionResult> CancelDoerOrderAsync(long OrderID);
     }
 }

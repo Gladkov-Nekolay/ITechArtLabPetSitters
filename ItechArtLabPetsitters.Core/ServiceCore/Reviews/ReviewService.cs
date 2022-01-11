@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ItechArtLabPetsitters.Core.Models;
 using ItechArtLabPetsitters.Repository.Entities;
 using ItechArtLabPetsitters.Repository.Interface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
 {
@@ -16,9 +17,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
         {
             _ReviewRepository = ReviewRepository;
         }
-        public async Task AddReviewAsync(ReviewCreationModel model)
+        public async Task <ActionResult> AddReviewAsync(ReviewCreationModel model)
         {
-            await _ReviewRepository.AddReviewAsync(model);
+            return await _ReviewRepository.AddReviewAsync(model);
         }
 
         public async Task<List<Review>> GetAllReviewAsync()
@@ -26,9 +27,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
             return await _ReviewRepository.GetAllReviewAsync();
         }
 
-        public async Task DeleteReviewAsync(long ID)
+        public async Task <ActionResult> DeleteReviewAsync(long ID)
         {
-            await _ReviewRepository.DeleteReviewAsync(ID);
+            return await _ReviewRepository.DeleteReviewAsync(ID);
         }
         public async Task<List<Review>> GetReviewsForUser(long ID) 
         {
