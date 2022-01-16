@@ -11,8 +11,8 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
 {
     public interface IReviewService
     {
-        public Task <ActionResult> AddReviewAsync(ReviewCreationModel model);
-        public Task <ActionResult> DeleteReviewAsync(long ID);
+        public Task AddReviewAsync(ReviewCreationModel model);
+        public Task DeleteReviewAsync(long ID);
         public Task<List<Review>> GetAllReviewAsync();
         public Task<List<Review>> GetReviewsForUser(long ID);
     }

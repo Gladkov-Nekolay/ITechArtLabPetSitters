@@ -28,9 +28,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             return await _ServiceRepository.SearchServiceAsync(ID);
         }
-        public async Task <ActionResult> AddServiceAsync(ServiceCreationModel model) 
+        public async Task AddServiceAsync(ServiceCreationModel model) 
         {
-            return await _ServiceRepository.AddServiceAsync(model);
+            await _ServiceRepository.AddServiceAsync(model);
         }
         public async Task <ActionResult> DeleteServiceAsync(long ID) 
         {

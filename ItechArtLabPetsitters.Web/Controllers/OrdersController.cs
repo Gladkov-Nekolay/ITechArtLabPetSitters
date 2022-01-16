@@ -14,7 +14,7 @@ namespace ItechArtLabPetsitters.Web.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase // ToDo add view all orders for petsitters
+    public class OrdersController : ControllerBase
     {
         private readonly IOrdersService service;
         public OrdersController(IOrdersService service)
@@ -26,40 +26,44 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [Route("[action]")]
         public async Task<ActionResult> CancelDoerOrderAsync(long OrderID)
         {
-            return await service.CancelDoerOrderAsync(OrderID);
+            await service.CancelDoerOrderAsync(OrderID);
+            return new OkResult();
         }
         [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model)
         {
-            return await service.CreateClientOrderAsync(model);
+            await service.CreateClientOrderAsync(model);
+            return new OkResult();
         }
         [Authorize(Roles = "User")]
         [HttpDelete]
         public async Task<ActionResult> DeleteOrderAsync(long OrderID)
         {
-            return await service.DeleteOrderAsync(OrderID);
+            await service.DeleteOrderAsync(OrderID);
+            return new OkResult();
         }
         [Authorize(Roles = "Petsitter")]
         [HttpPut]
         [Route("[action]")]
         public async Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID)
         {
-            return await service.TakeDoerOrderAsync(OrderID, DoerID);
+            await service.TakeDoerOrderAsync(OrderID, DoerID);
+            return new OkResult();
         }
         [Authorize(Roles = "Petsitter")]
         [HttpGet]
         [Route("[action]")]
-        public async Task<List<Order>> GetAvaliableOrderListAsync() 
+        public async Task<ActionResult> GetAvaliableOrderListAsync() 
         {
-            return await service.GetAvaliableOrderListAsync();
+            return new OkObjectResult(await service.GetAvaliableOrderListAsync());
         }
         [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("[action]")]
-        public async Task<List<Order>> GetAllOrdersListAsync()
+        public async Task<ActionResult> GetAllOrdersListAsync()
         {
-            return await service.GetAllOrdersAsync();
+            return new OkObjectResult(await service.GetAllOrdersAsync());
         }
     }
 }

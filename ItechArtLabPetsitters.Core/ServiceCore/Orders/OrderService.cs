@@ -17,24 +17,24 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Orders
         {
             _OrdersRepository = orderRepository;
         }
-        public async Task<ActionResult> CancelDoerOrderAsync(long OrderID)
+        public async Task CancelDoerOrderAsync(long OrderID)
         {
-            return await _OrdersRepository.CancelDoerOrderAsync(OrderID);
+            await _OrdersRepository.CancelDoerOrderAsync(OrderID);
         }
 
-        public async Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model)
+        public async Task CreateClientOrderAsync(OrderCreationModel model)
         {
-            return await _OrdersRepository.CreateClientOrderAsync(model);
+            await _OrdersRepository.CreateClientOrderAsync(model);
         }
 
-        public async Task<ActionResult> DeleteOrderAsync(long OrderID)
+        public async Task DeleteOrderAsync(long OrderID)
         {
-            return await _OrdersRepository.DeleteOrderAsync(OrderID);
+            await _OrdersRepository.DeleteOrderAsync(OrderID);
         }
 
-        public async Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID)
+        public async Task TakeDoerOrderAsync(long OrderID, long DoerID)
         {
-            return await _OrdersRepository.TakeDoerOrderAsync(OrderID, DoerID);
+            await _OrdersRepository.TakeDoerOrderAsync(OrderID, DoerID);
         }
         public async Task<List<Order>> GetAvaliableOrderListAsync() 
         {

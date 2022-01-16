@@ -14,6 +14,6 @@ namespace ItechArtLabPetsitters.Repository.Interface
         public Task <ActionResult> AddReviewAsync(ReviewCreationModel model);
         public Task<List<Review>> GetAllReviewAsync();
         public Task<List<Review>> GetReviewsForUser(long ID);
-        public Task <ActionResult> DeleteReviewAsync(long ID);
+        public Task DeleteReviewAsync(long ID);
     }
 }

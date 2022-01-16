@@ -42,9 +42,9 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
         [HttpGet]
-        public async Task<List<User>> GetAllUsersAsync()
+        public async Task<ActionResult> GetAllUsersAsync()
         {
-            return await service.GetAllUsersAsync();
+            return new OkObjectResult(await service.GetAllUsersAsync());
         }
         [AllowAnonymous]
         [Route("[action]")]

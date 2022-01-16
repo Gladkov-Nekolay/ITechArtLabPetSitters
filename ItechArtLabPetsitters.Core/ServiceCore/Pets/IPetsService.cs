@@ -11,8 +11,8 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
 {
     public interface IPetsService
     {
-        public Task<ActionResult> AddPetAsync(PetCreationModel model);
-        public Task<ActionResult> DeletePetAsync(long ID);
+        public Task AddPetAsync(PetCreationModel model);
+        public Task DeletePetAsync(long ID);
         public Task<List<Pet>> GetUserPetsAsync(long userID); 
     }
 }

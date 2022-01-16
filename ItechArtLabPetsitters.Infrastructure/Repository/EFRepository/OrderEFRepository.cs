@@ -23,37 +23,33 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             this.mapper = Mapper;
         }
 
-        public async Task<ActionResult> CancelDoerOrderAsync(long OrderID)
+        public async Task CancelDoerOrderAsync(long OrderID)
         {
             Order TakeOreder = await _dbContext.Orders.FirstAsync(p => p.ID == OrderID);
             TakeOreder.PetsitterID = null;
             _dbContext.Orders.Update(TakeOreder);
             await _dbContext.SaveChangesAsync();
-            return new OkResult();
         }
 
-        public async Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model)
+        public async Task CreateClientOrderAsync(OrderCreationModel model)
         {
             _dbContext.Orders.Add(mapper.Map<OrderCreationModel, Order>(model));
             await _dbContext.SaveChangesAsync();
-            return new OkResult();
         }
 
-        public async Task<ActionResult> DeleteOrderAsync(long OrderID)
+        public async Task DeleteOrderAsync(long OrderID)
         {
             Order deletedOrder = await _dbContext.Orders.FirstAsync(p => p.ID == OrderID);
             _dbContext.Orders.Remove(deletedOrder);
             await _dbContext.SaveChangesAsync();
-            return new OkResult();
         }
 
-        public async Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID)
+        public async Task TakeDoerOrderAsync(long OrderID, long DoerID)
         {
             Order TakeOreder = await _dbContext.Orders.FirstAsync(p => p.ID == OrderID);
             TakeOreder.PetsitterID = DoerID;
             _dbContext.Orders.Update(TakeOreder);
             await _dbContext.SaveChangesAsync();
-            return new OkResult();
         }
         public async Task<List<Order>> GetAvaliableOrderListAsync() 
         {

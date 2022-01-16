@@ -17,14 +17,14 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             _PetsRepository = PetsRepository;
         }
-        public async Task<ActionResult> AddPetAsync(PetCreationModel model)
+        public async Task AddPetAsync(PetCreationModel model)
         {
-             return await _PetsRepository.AddPetAsync(model);
+            await _PetsRepository.AddPetAsync(model);
         }
 
-        public async Task<ActionResult> DeletePetAsync(long ID)
+        public async Task DeletePetAsync(long ID)
         {
-            return await _PetsRepository.DeletePetAsync(ID);
+            await _PetsRepository.DeletePetAsync(ID);
         }
         public async Task<List<Pet>> GetUserPetsAsync(long userID)
         {

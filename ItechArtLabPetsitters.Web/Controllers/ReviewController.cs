@@ -26,27 +26,33 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [HttpPost]
         public async Task <ActionResult> AddReviewAsync(ReviewCreationModel model)
         {
-            return await service.AddReviewAsync(model);
+            if (!ModelState.IsValid) 
+            {
+                return ValidationProblem();
+            }
+            await service.AddReviewAsync(model);
+            return new OkResult() ;
         }
         [Authorize(Roles = "User")]
         [HttpDelete]
         public async Task <ActionResult> DeleteReviewAsync(long ID)
         {
-            return await service.DeleteReviewAsync(ID);
+            await service.DeleteReviewAsync(ID);
+            return new OkResult();
         }
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
         [HttpGet]
-        public async Task<List<Review>> GetAllReviewAsync()
+        public async Task<ActionResult> GetAllReviewAsync()
         {
-            return await service.GetAllReviewAsync();
+            return new OkObjectResult (await service.GetAllReviewAsync());
         }
         [Authorize(Roles = "User")]
         [Route("[action]")]
         [HttpGet]
-        public async Task<List<Review>> GetReviewsForUser(long UserID)
+        public async Task<ActionResult> GetReviewsForUser(long UserID)
         {
-            return await service.GetReviewsForUser(UserID);
+            return new OkObjectResult(await service.GetReviewsForUser(UserID));
         }
     }
 }

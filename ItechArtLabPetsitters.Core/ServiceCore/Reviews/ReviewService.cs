@@ -27,9 +27,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
             return await _ReviewRepository.GetAllReviewAsync();
         }
 
-        public async Task <ActionResult> DeleteReviewAsync(long ID)
+        public async Task DeleteReviewAsync(long ID)
         {
-            return await _ReviewRepository.DeleteReviewAsync(ID);
+            await _ReviewRepository.DeleteReviewAsync(ID);
         }
         public async Task<List<Review>> GetReviewsForUser(long ID) 
         {

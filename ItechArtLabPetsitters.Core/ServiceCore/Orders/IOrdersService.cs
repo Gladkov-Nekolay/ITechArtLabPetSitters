@@ -11,10 +11,10 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Orders
 {
     public interface IOrdersService
     {
-        public Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model);
-        public Task<ActionResult> DeleteOrderAsync(long OrderID);
-        public Task<ActionResult> TakeDoerOrderAsync(long OrderID, long DoerID);
-        public Task<ActionResult> CancelDoerOrderAsync(long OrderID);
+        public Task CreateClientOrderAsync(OrderCreationModel model);
+        public Task DeleteOrderAsync(long OrderID);
+        public Task TakeDoerOrderAsync(long OrderID, long DoerID);
+        public Task CancelDoerOrderAsync(long OrderID);
         public Task<List<Order>> GetAvaliableOrderListAsync();
         public Task<List<Order>> GetAllOrdersAsync();
     }
