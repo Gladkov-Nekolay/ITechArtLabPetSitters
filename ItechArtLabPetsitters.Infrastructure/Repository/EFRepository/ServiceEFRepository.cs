@@ -45,7 +45,6 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
                 _dbContext.Services.Remove(deletedService);
                 await _dbContext.SaveChangesAsync();
             }
-            
         }
     }
 }

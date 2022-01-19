@@ -17,9 +17,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore.Reviews
         {
             _ReviewRepository = ReviewRepository;
         }
-        public async Task <ActionResult> AddReviewAsync(ReviewCreationModel model)
+        public async Task AddReviewAsync(ReviewCreationModel model)
         {
-            return await _ReviewRepository.AddReviewAsync(model);
+            await _ReviewRepository.AddReviewAsync(model);
         }
 
         public async Task<List<Review>> GetAllReviewAsync()

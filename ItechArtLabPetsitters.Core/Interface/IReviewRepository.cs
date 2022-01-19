@@ -11,7 +11,7 @@ namespace ItechArtLabPetsitters.Repository.Interface
 {
     public interface IReviewRepository
     {
-        public Task <ActionResult> AddReviewAsync(ReviewCreationModel model);
+        public Task AddReviewAsync(ReviewCreationModel model);
         public Task<List<Review>> GetAllReviewAsync();
         public Task<List<Review>> GetReviewsForUser(long ID);
         public Task DeleteReviewAsync(long ID);

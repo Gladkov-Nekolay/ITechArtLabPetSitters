@@ -32,9 +32,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         {
             await _ServiceRepository.AddServiceAsync(model);
         }
-        public async Task <ActionResult> DeleteServiceAsync(long ID) 
+        public async Task DeleteServiceAsync(long ID) 
         {
-            return await _ServiceRepository.DeleteServiceAsync(ID);
+            await _ServiceRepository.DeleteServiceAsync(ID);
         }
 
     }
