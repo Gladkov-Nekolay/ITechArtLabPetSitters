@@ -10,6 +10,6 @@ namespace ItechArtLabPetsitters.Core.Interface
 {
     public interface IUserRepository
     {
-        public Task<List<User>> GetAllUsersAsync();
+        public Task<List<User>> GetAllUsersAsync(PaginationSettingsModel paginationSettings);
     }
 }

@@ -24,6 +24,10 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> AsyncPostPet(PetCreationModel model)
         {
+            if (!ModelState.IsValid) 
+            {
+                return ValidationProblem();
+            }
             await service.AddPetAsync(model);
             return new OkResult();
         }

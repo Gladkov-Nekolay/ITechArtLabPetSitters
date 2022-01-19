@@ -51,13 +51,22 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             _dbContext.Orders.Update(TakeOreder);
             await _dbContext.SaveChangesAsync();
         }
-        public async Task<List<Order>> GetAvaliableOrderListAsync() 
+        public async Task<List<Order>> GetAvaliableOrderListAsync(PaginationSettingsModel paginationSettings) 
         {
-            return await _dbContext.Orders.Where(o => o.PetsitterID == null).ToListAsync();
+            return await _dbContext.Orders
+                .Where(o => o.PetsitterID == null)
+                .OrderBy(p => p.ID)
+                .Skip((paginationSettings.PageNumber - 1) * paginationSettings.PageSize)
+                .Take(paginationSettings.PageSize)
+                .ToListAsync();
         }
-        public async Task<List<Order>> GetAllOrdersListAsync()
+        public async Task<List<Order>> GetAllOrdersListAsync(PaginationSettingsModel paginationSettings)
         {
-            return await _dbContext.Orders.ToListAsync();
+            return await _dbContext.Orders
+                .OrderBy(p=>p.ID)
+                .Skip((paginationSettings.PageNumber-1)*paginationSettings.PageSize)
+                .Take(paginationSettings.PageSize)
+                .ToListAsync();
         }
     }
 }

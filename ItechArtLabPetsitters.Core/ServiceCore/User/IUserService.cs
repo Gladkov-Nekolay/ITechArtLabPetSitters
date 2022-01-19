@@ -17,6 +17,6 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
         public List<Claim> GetClaims(User user, IList<string> UserRoles);
         public Task <ActionResult> RegisterAsync(UserCreationModel model);
         public Task <IActionResult> LoginUserAsync(UserAuthentificationModel model);
-        public Task<List<User>> GetAllUsersAsync();
+        public Task<List<User>> GetAllUsersAsync(PaginationSettingsModel paginationSettings);
     }
 }

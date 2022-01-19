@@ -33,6 +33,10 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateClientOrderAsync(OrderCreationModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return ValidationProblem();
+            }
             await service.CreateClientOrderAsync(model);
             return new OkResult();
         }
@@ -54,16 +58,24 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [Authorize(Roles = "Petsitter")]
         [HttpGet]
         [Route("[action]")]
-        public async Task<ActionResult> GetAvaliableOrderListAsync() 
+        public async Task<ActionResult> GetAvaliableOrderListAsync([FromQuery]PaginationSettingsModel paginationSettings) 
         {
-            return new OkObjectResult(await service.GetAvaliableOrderListAsync());
+            if (!ModelState.IsValid)
+            {
+                return ValidationProblem();
+            }
+            return new OkObjectResult(await service.GetAvaliableOrderListAsync(paginationSettings));
         }
         [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("[action]")]
-        public async Task<ActionResult> GetAllOrdersListAsync()
+        public async Task<ActionResult> GetAllOrdersListAsync([FromQuery] PaginationSettingsModel paginationSettings)
         {
-            return new OkObjectResult(await service.GetAllOrdersAsync());
+            if (!ModelState.IsValid)
+            {
+                return ValidationProblem();
+            }
+            return new OkObjectResult(await service.GetAllOrdersAsync(paginationSettings));
         }
     }
 }

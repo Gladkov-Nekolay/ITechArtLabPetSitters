@@ -15,7 +15,7 @@ namespace ItechArtLabPetsitters.Core.Interface
         public Task DeleteOrderAsync(long OrderID);
         public Task TakeDoerOrderAsync(long OrderID, long DoerID);
         public Task CancelDoerOrderAsync(long OrderID);
-        public Task<List<Order>> GetAvaliableOrderListAsync();
-        public Task<List<Order>> GetAllOrdersListAsync();
+        public Task<List<Order>> GetAvaliableOrderListAsync(PaginationSettingsModel paginationSettings);
+        public Task<List<Order>> GetAllOrdersListAsync(PaginationSettingsModel paginationSettings);
     }
 }

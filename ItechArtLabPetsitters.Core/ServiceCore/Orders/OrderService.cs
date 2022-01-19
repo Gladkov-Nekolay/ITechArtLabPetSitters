@@ -36,13 +36,13 @@ namespace ItechArtLabPetsitters.Core.ServiceCore.Orders
         {
             await _OrdersRepository.TakeDoerOrderAsync(OrderID, DoerID);
         }
-        public async Task<List<Order>> GetAvaliableOrderListAsync() 
+        public async Task<List<Order>> GetAvaliableOrderListAsync(PaginationSettingsModel paginationSettings) 
         {
-            return await _OrdersRepository.GetAvaliableOrderListAsync();
+            return await _OrdersRepository.GetAvaliableOrderListAsync(paginationSettings);
         }
-        public async Task<List<Order>> GetAllOrdersAsync() 
+        public async Task<List<Order>> GetAllOrdersAsync(PaginationSettingsModel paginationSettings) 
         {
-            return await _OrdersRepository.GetAllOrdersListAsync();
+            return await _OrdersRepository.GetAllOrdersListAsync(paginationSettings);
         }
     }
 }

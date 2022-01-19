@@ -37,9 +37,9 @@ namespace ItechArtLabPetsitters.Repository.ServiceCore
             return new OkResult();
         }
 
-        public async Task<List<User>> GetAllUsersAsync() 
+        public async Task<List<User>> GetAllUsersAsync(PaginationSettingsModel paginationSettings) 
         {
-            return await _UserRepository.GetAllUsersAsync();
+            return await _UserRepository.GetAllUsersAsync(paginationSettings);
         }
 
         public async Task<IActionResult> LoginUserAsync(UserAuthentificationModel model)

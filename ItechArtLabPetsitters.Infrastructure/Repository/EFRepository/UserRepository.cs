@@ -21,9 +21,13 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             this._dbContext = context;
             this.mapper = Mapper;
         }
-        public async Task<List<User>> GetAllUsersAsync() 
+        public async Task<List<User>> GetAllUsersAsync(PaginationSettingsModel paginationSettings) 
         {
-            return await _dbContext.Users.ToListAsync();
+            return await _dbContext.Users
+                .OrderBy(p=>p.Id)
+                .Skip((paginationSettings.PageNumber-1)*paginationSettings.PageSize)
+                .Take(paginationSettings.PageSize)
+                .ToListAsync();
         }
 
     }

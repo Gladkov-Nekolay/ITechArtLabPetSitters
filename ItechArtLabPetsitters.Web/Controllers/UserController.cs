@@ -42,9 +42,14 @@ namespace ItechArtLabPetsitters.Web.Controllers
         [Authorize(Roles = "Admin")]
         [Route("[action]")]
         [HttpGet]
-        public async Task<ActionResult> GetAllUsersAsync()
+        public async Task<ActionResult> GetAllUsersAsync([FromQuery]PaginationSettingsModel paginationSettings)
         {
-            return new OkObjectResult(await service.GetAllUsersAsync());
+            if (!ModelState.IsValid) 
+            {
+                return ValidationProblem();
+            }
+
+            return new OkObjectResult(await service.GetAllUsersAsync(paginationSettings));
         }
         [AllowAnonymous]
         [Route("[action]")]
