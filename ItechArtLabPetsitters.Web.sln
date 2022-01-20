@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItechArtLabPetsitters.Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItechArtLabPetsitters.Core", "ItechArtLabPetsitters.Core\ItechArtLabPetsitters.Core.csproj", "{9A47E79D-2B2F-48B4-8626-D2CF223C52DB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{98D6220D-3A6A-4296-BAA0-811B29893CEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{18EC95AE-F6CA-4E9E-8C56-07972427CCFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,10 @@ Global
 		{9A47E79D-2B2F-48B4-8626-D2CF223C52DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A47E79D-2B2F-48B4-8626-D2CF223C52DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A47E79D-2B2F-48B4-8626-D2CF223C52DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98D6220D-3A6A-4296-BAA0-811B29893CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98D6220D-3A6A-4296-BAA0-811B29893CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98D6220D-3A6A-4296-BAA0-811B29893CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98D6220D-3A6A-4296-BAA0-811B29893CEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

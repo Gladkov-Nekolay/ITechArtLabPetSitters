@@ -16,11 +16,9 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
     public class OrderEFRepository: IOrderRepository
     {
         private readonly PetsittersContext _dbContext;
-        private readonly IMapper mapper;
-        public OrderEFRepository(PetsittersContext context, IMapper Mapper)
+        public OrderEFRepository(PetsittersContext context)
         {
             this._dbContext = context;
-            this.mapper = Mapper;
         }
 
         public async Task CancelDoerOrderAsync(long OrderID)
@@ -31,9 +29,9 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task CreateClientOrderAsync(OrderCreationModel model)
+        public async Task CreateClientOrderAsync(Order AddingOrder)
         {
-            _dbContext.Orders.Add(mapper.Map<OrderCreationModel, Order>(model));
+            _dbContext.Orders.Add(AddingOrder);
             await _dbContext.SaveChangesAsync();
         }
 
@@ -53,6 +51,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Repository.EFRepository
         }
         public async Task<List<Order>> GetAvaliableOrderListAsync(PaginationSettingsModel paginationSettings) 
         {
+             
             return await _dbContext.Orders
                 .Where(o => o.PetsitterID == null)
                 .OrderBy(p => p.ID)

@@ -14,7 +14,7 @@ namespace ItechArtLabPetsitters.Infrastructure.Context
 {
     public class PetsittersContext : IdentityDbContext<User, IdentityRole<long>, long>
     {
-        public PetsittersContext(DbContextOptions options) : base(options)
+        public PetsittersContext(DbContextOptions<PetsittersContext> options) : base(options) // пересоздвавать миграцию ?
         {
         }
 
